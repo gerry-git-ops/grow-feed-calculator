@@ -3,7 +3,7 @@
 "brand": { "id": "hesi", "name": "Hesi" },
 "schedules": [{
     "id": "soil",
-    "medium": "Soil"
+    "medium": "soil",
       	"products": [
         	{ "id": "tnt-complex",     "name": { "en": "TNT Complex" },                                  "unit": "ml",    "baseVolumeLiters": 10 },
         	{ "id": "bloom-complex",   "name": { "en": "Bloom Complex",   "de": "Blüh Complex" },        "unit": "ml",    "baseVolumeLiters": 10 },
@@ -12,7 +12,7 @@
         	{ "id": "supervit",        "name": { "en": "SuperVit" },                                     "unit": "drops", "baseVolumeLiters": 4.5 },
 			{ "id": "powerzyme",       "name": { "en": "PowerZyme" },                                    "unit": "ml",    "baseVolumeLiters": 10, "optional": true },
   			{ "id": "boost",           "name": { "en": "Boost" },                                        "unit": "ml",    "baseVolumeLiters": 10 }
-		]
+		],
         "weeks": [
   			{ "phase": "clone",  "week": 1, "doses": { "tnt-complex": 25, "root-complex": 50, "supervit": 1, "powerzyme": 20 } },
   			{ "phase": "growth", "week": 1, "doses": { "tnt-complex": 50, "root-complex": 50, "supervit": 1, "powerzyme": 20 } },
