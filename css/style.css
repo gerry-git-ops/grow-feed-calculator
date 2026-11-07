@@ -434,6 +434,7 @@ body {
 }
 
 .changelog[open] {
+    flex-basis: 100%;
     padding: var(--space-l);
     text-align: left;
     border: 1px solid var(--accent);
@@ -453,10 +454,6 @@ body {
 
 .version-outdated {
     color: var(--warning);
-}
-
-.auto-update {
-    margin-top: var(--space-l);
 }
 
 .changelog-changes {
