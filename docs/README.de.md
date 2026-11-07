@@ -8,9 +8,8 @@
 Hersteller, Phase und Woche wählen, die Wassermenge eingeben – und für jedes Produkt die genaue Menge bekommen.
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES%20Module-F7DF1E?logo=javascript&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-5FA04E?logo=nodedotjs&logoColor=white)
 ![Düngeschemas](https://img.shields.io/badge/D%C3%BCngeschemas-Hesi%20Erde-059669)
-![Status](https://img.shields.io/badge/Status-erste%20Version-orange)
+![Status](https://img.shields.io/badge/Status-fr%C3%BChe%20Version-orange)
 ![Lizenz](https://img.shields.io/badge/Lizenz-GPL--3.0-blue)
 ![Sprachen](https://img.shields.io/badge/Sprachen-EN%20%C2%B7%20DE-8a2be2)
 
@@ -19,9 +18,8 @@ Hersteller, Phase und Woche wählen, die Wassermenge eingeben – und für jedes
 ---
 
 > [!WARNING]
-> **Das ist eine sehr frühe Version.**
-> Es gibt eine erste Rechner-Seite ohne Design, die du lokal starten kannst. Design, weitere Sprachen
-> und die App für den Homescreen (offline, fühlt sich an wie eine App) kommen als Nächstes.
+> **Das ist eine frühe Version.**
+> Der Rechner funktioniert und lässt sich auf dem Home-Bildschirm installieren, bisher aber nur mit dem Hesi-Erde-Schema.
 
 Er **rechnet nur**. Er verfolgt oder überwacht deine Pflanzen nicht. Das übernimmt später ein eigener
 **Grow Manager**, der diesen Rechner dann über eine API nutzen kann.
@@ -89,20 +87,13 @@ Beispiel: Blüh Complex ist 50 ml pro 10 L. Für 5 L Wasser sind das 50 × 5 ÷ 
 | `phase` | `start` (Sämling oder Steckling), `growth` oder `bloom` – die angezeigten Wörter kommen aus den Sprachdateien der App |
 | `doses` | Produkt-ID → Dosis. Fehlt ein Produkt, wird es in dieser Woche nicht gegeben, eine leere Liste heißt reines Wasser |
 
-## Ausprobieren
+## Benutzen
 
-Du brauchst [Node.js](https://nodejs.org) 18 oder neuer.
+Öffne **[https://gerry-git-ops.github.io/grow-feed-calculator/](https://gerry-git-ops.github.io/grow-feed-calculator/)** am Handy.
+Zum Installieren im Browser *Zum Home-Bildschirm* wählen – dann läuft sie offline wie eine App.
 
-```bash
-git clone https://github.com/gerry-git-ops/grow-feed-calculator.git
-cd grow-feed-calculator
-node try.js
-```
-
-`try.js` rechnet Blüte-Woche 4 für 5 L Wasser mit eingeschaltetem PowerZyme.
-
-Um die Rechner-Seite zu öffnen, stelle den Ordner über einen lokalen Webserver bereit – öffnest du
-`index.html` direkt, lädt der Browser die Datendatei nicht. Zum Beispiel:
+Um sie lokal zu starten, stelle den Ordner über einen lokalen Webserver bereit – öffnest du
+`index.html` direkt, lädt der Browser die Datendateien nicht. Zum Beispiel:
 
 - VS Code: Erweiterung **Live Server**, dann *Open with Live Server* auf `index.html`
 - Terminal: `npx serve` und die angezeigte Adresse öffnen
@@ -111,14 +102,21 @@ Um die Rechner-Seite zu öffnen, stelle den Ordner über einen lokalen Webserver
 
 ```
 grow-feed-calculator/
-├── data/
-│   └── hesi.json        # Hesi-Düngeschemas
+├── assets/              # Logo und App-Icons
+├── css/style.css        # Design
+├── data/hesi.json       # Hesi-Düngeschemas
+├── fonts/geist/         # Schrift Geist (SIL Open Font License)
+├── i18n/                # Texte je Sprache (en, de)
 ├── src/
 │   ├── app.js           # Rechner-Seite: Eingaben und Ergebnis
-│   └── calculator.js    # findWeek und calculateDoses
+│   ├── calculator.js    # findWeek und calculateDoses
+│   ├── changelog.js     # Version und Verlauf
+│   ├── i18n.js          # Sprache, Mehrzahl, Zahlen- und Datumsformat
+│   └── theme.js         # Hell / Dunkel
+├── changelog.json       # Versionsverlauf
 ├── index.html           # Rechner-Seite
-├── try.js               # schneller Test von Hand
-└── package.json         # schaltet ES-Module ein
+├── manifest.webmanifest # App für den Home-Bildschirm
+└── sw.js                # Offline-Betrieb
 ```
 
 ## Hinweis
