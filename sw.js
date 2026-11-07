@@ -22,6 +22,7 @@ const FILES = [
   "data/canna.json",
   "i18n/en.json",
   "i18n/de.json",
+  "i18n/fr.json",
   "assets/logo.webp",
   "assets/icons/favicon-32.png",
   "assets/icons/apple-touch-icon.png",

@@ -1,4 +1,4 @@
-export const languages = ["en", "de"];
+export const languages = ["en", "de", "fr"];
 const fallback = "en";
 
 let current = fallback;

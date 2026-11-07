@@ -1,5 +1,20 @@
 [
     {
+        "version": "0.8.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "French as app language – notes from the feeding charts are still shown in English"
+            ],
+            "de": [
+                "Französisch als App-Sprache – Hinweise aus den Düngeschemas stehen vorerst noch auf Englisch"
+            ],
+            "fr": [
+                "Le français comme langue de l'application – les remarques des programmes d'engrais restent pour l'instant en anglais"
+            ]
+        }
+    },
+    {
         "version": "0.7.0",
         "date": "2026-11-07",
         "changes": {
