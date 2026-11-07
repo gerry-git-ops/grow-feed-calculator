@@ -44,6 +44,13 @@
         "later": "Später",
         "hide": "Für diese Version nicht mehr anzeigen",
         "auto": "Automatisch aktualisieren",
-        "autoShort": "Auto-Update"
+        "autoShort": "Auto-Update",
+        "check": "Nach Updates suchen",
+        "checking": "Wird geprüft …",
+        "current": "Ist aktuell",
+        "offline": "Keine Verbindung",
+        "updating": "Wird aktualisiert …",
+        "to": "Auf {version} aktualisieren",
+        "new": "neu"
     }
 }

@@ -1,5 +1,21 @@
 [
     {
+        "version": "0.7.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "Checks for updates every time the app comes back from the background",
+                "Version history shows what the new version brings",
+                "Button to check for updates or to update right away"
+            ],
+            "de": [
+                "Prüft auf Updates, sobald die App aus dem Hintergrund zurückkommt",
+                "Der Versionsverlauf zeigt, was die neue Version bringt",
+                "Knopf zum Suchen nach Updates oder zum direkten Aktualisieren"
+            ]
+        }
+    },
+    {
         "version": "0.6.1",
         "date": "2026-11-07",
         "changes": {

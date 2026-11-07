@@ -44,6 +44,13 @@
         "later": "Later",
         "hide": "Don't show again for this version",
         "auto": "Update automatically",
-        "autoShort": "Auto-Update"
+        "autoShort": "Auto-Update",
+        "check": "Check for updates",
+        "checking": "Checking …",
+        "current": "Up to date",
+        "offline": "No connection",
+        "updating": "Updating …",
+        "to": "Update to {version}",
+        "new": "new"
     }
 }

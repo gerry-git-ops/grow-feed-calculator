@@ -421,6 +421,39 @@ body {
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
+/* Small button in the version history: check for updates or update */
+.small-button {
+    display: block;
+    margin: 0 auto var(--space-m);
+    padding: 0.125rem var(--space-s);
+    background: none;
+    color: var(--text);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-input);
+    font: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: border-color var(--transition);
+}
+
+.small-button:hover,
+.small-button:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.small-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.button-update {
+    background: var(--warning);
+    color: var(--on-accent);
+    border-color: var(--warning);
+    box-shadow: 0 0 10px var(--warning-glow);
+}
+
 .version {
     color: var(--accent);
     font-family: var(--font-mono);
@@ -450,6 +483,10 @@ body {
 .changelog-version {
     margin: var(--space-m) 0 var(--space-s);
     font-size: 1rem;
+}
+
+.changelog-new {
+    color: var(--warning);
 }
 
 .version-outdated {
