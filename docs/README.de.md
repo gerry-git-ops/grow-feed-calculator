@@ -19,9 +19,9 @@ Hersteller, Phase und Woche wählen, die Wassermenge eingeben – und für jedes
 ---
 
 > [!WARNING]
-> **Das ist die allererste Version und sie kann noch nicht wirklich viel.**
-> Es gibt noch keine App zum Öffnen – nur die Daten des Düngeschemas und die Rechenlogik,
-> die du im Terminal ausprobieren kannst. Die App selbst (eine Seite für den Homescreen) kommt als Nächstes.
+> **Das ist eine sehr frühe Version.**
+> Es gibt eine erste Rechner-Seite ohne Design, die du lokal starten kannst. Design, weitere Sprachen
+> und die App für den Homescreen (offline, fühlt sich an wie eine App) kommen als Nächstes.
 
 Er **rechnet nur**. Er verfolgt oder überwacht deine Pflanzen nicht. Das übernimmt später ein eigener
 **Grow Manager**, der diesen Rechner dann über eine API nutzen kann.
@@ -30,7 +30,11 @@ Er **rechnet nur**. Er verfolgt oder überwacht deine Pflanzen nicht. Das übern
 
 - Mengen für jede Wassermenge, umgerechnet aus dem Düngeschema des Herstellers
 - Produkte mit eigener Einheit, z. B. ml pro 10 L oder Tropfen pro 4,5 L
+- Wasser in L oder ml, mit Komma oder Punkt (`0,7` oder `0.7`)
 - Optionale Produkte (wie PowerZyme) nur, wenn du sie einschaltest
+- Vormisch-Produkte (wie SuperVit) stehen beim Wasser statt als Dosis,
+  weil sich winzige Mengen wie 0,16 Tropfen nicht abmessen lassen
+- Kurze Anwendungshinweise je Produkt, direkt aus den Daten
 - Produktnamen je Sprache – Englisch ist immer vorhanden, andere Sprachen dort, wo der Name abweicht
 - Eine Datendatei pro Hersteller, neue Hersteller kommen ohne Änderung am Code dazu
 
@@ -38,7 +42,7 @@ Er **rechnet nur**. Er verfolgt oder überwacht deine Pflanzen nicht. Das übern
 
 | Hersteller | Schema | Wochen |
 |---|---|---|
-| Hesi | Erde | Steckling, 2 × Wuchs, 8 × Blüte (Woche 8: mit reinem Wasser spülen) |
+| Hesi | Erde | Sämling/Steckling, 2 × Wuchs, 8 × Blüte (Woche 8: mit reinem Wasser spülen) |
 
 ## So funktioniert es
 
@@ -80,7 +84,9 @@ Beispiel: Blüh Complex ist 50 ml pro 10 L. Für 5 L Wasser sind das 50 × 5 ÷ 
 | `unit` | `ml` oder `drops` (Tropfen) |
 | `baseVolumeLiters` | Wassermenge, auf die sich die Dosis bezieht |
 | `optional` | `true`, wenn man das Produkt pro Gießen selbst einschaltet |
-| `phase` | `clone`, `growth` oder `bloom` – die angezeigten Wörter kommen aus den Sprachdateien der App |
+| `premix` | `true`, wenn das Produkt vorher ins Wasser gemischt wird (steht beim Wasser, nicht als Dosis) |
+| `note` | Optionaler kurzer Anwendungshinweis je Sprache, steht unter dem Schalter des Produkts |
+| `phase` | `start` (Sämling oder Steckling), `growth` oder `bloom` – die angezeigten Wörter kommen aus den Sprachdateien der App |
 | `doses` | Produkt-ID → Dosis. Fehlt ein Produkt, wird es in dieser Woche nicht gegeben, eine leere Liste heißt reines Wasser |
 
 ## Ausprobieren
@@ -95,6 +101,12 @@ node try.js
 
 `try.js` rechnet Blüte-Woche 4 für 5 L Wasser mit eingeschaltetem PowerZyme.
 
+Um die Rechner-Seite zu öffnen, stelle den Ordner über einen lokalen Webserver bereit – öffnest du
+`index.html` direkt, lädt der Browser die Datendatei nicht. Zum Beispiel:
+
+- VS Code: Erweiterung **Live Server**, dann *Open with Live Server* auf `index.html`
+- Terminal: `npx serve` und die angezeigte Adresse öffnen
+
 ## Projektstruktur
 
 ```
@@ -102,7 +114,9 @@ grow-feed-calculator/
 ├── data/
 │   └── hesi.json        # Hesi-Düngeschemas
 ├── src/
+│   ├── app.js           # Rechner-Seite: Eingaben und Ergebnis
 │   └── calculator.js    # findWeek und calculateDoses
+├── index.html           # Rechner-Seite
 ├── try.js               # schneller Test von Hand
 └── package.json         # schaltet ES-Module ein
 ```

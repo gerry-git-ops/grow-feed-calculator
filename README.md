@@ -19,9 +19,9 @@ Pick a brand, a phase and a week, enter how much water you mix – and get the e
 ---
 
 > [!WARNING]
-> **This is the very first version and it cannot really do much yet.**
-> There is no app to open yet – only the feeding chart data and the calculation logic,
-> which you can try in the terminal. The app itself (a page you can put on your home screen) comes next.
+> **This is a very early version.**
+> There is a first, unstyled calculator page you can run locally. Design, more languages and
+> the home screen app (offline, works like an app) come next.
 
 It only **calculates**. It does not track or monitor your plants. That is the job of a future
 **Grow Manager**, which can later use this calculator through an API.
@@ -30,7 +30,11 @@ It only **calculates**. It does not track or monitor your plants. That is the jo
 
 - Doses for any amount of water, scaled from the manufacturer's feeding chart
 - Products with their own units, e.g. ml per 10 L or drops per 4.5 L
+- Water in L or ml, with comma or dot (`0,7` or `0.7`)
 - Optional products (like PowerZyme) only when you switch them on
+- Premix products (like SuperVit) are shown with the water instead of as a dose,
+  because tiny amounts like 0.16 drops cannot be measured
+- Short usage notes per product, straight from the data
 - Product names per language – English is always there, other languages where the name differs
 - One data file per brand, so new brands can be added without touching the code
 
@@ -38,7 +42,7 @@ It only **calculates**. It does not track or monitor your plants. That is the jo
 
 | Brand | Schedule | Weeks |
 |---|---|---|
-| Hesi | Soil | Clone, 2 × growth, 8 × bloom (week 8: flush with plain water) |
+| Hesi | Soil | Seedling/clone, 2 × growth, 8 × bloom (week 8: flush with plain water) |
 
 ## How it works
 
@@ -80,7 +84,9 @@ Example: Bloom Complex is 50 ml per 10 L. For 5 L of water that is 50 × 5 ÷ 10
 | `unit` | `ml` or `drops` |
 | `baseVolumeLiters` | Amount of water the dose refers to |
 | `optional` | `true` if the user switches the product on per feeding |
-| `phase` | `clone`, `growth` or `bloom` – the shown words come from the app's language files |
+| `premix` | `true` if the product is mixed into the water beforehand (shown with the water, not as a dose) |
+| `note` | Optional short usage hint per language, shown below the product's switch |
+| `phase` | `start` (seedling or clone), `growth` or `bloom` – the shown words come from the app's language files |
 | `doses` | Product ID → dose. A missing product is not given that week, an empty list means plain water |
 
 ## Try it
@@ -95,6 +101,12 @@ node try.js
 
 `try.js` calculates bloom week 4 for 5 L of water with PowerZyme switched on.
 
+To open the calculator page, serve the folder with any local web server – the browser
+does not load the data file when you open `index.html` directly. For example:
+
+- VS Code: extension **Live Server**, then *Open with Live Server* on `index.html`
+- Terminal: `npx serve` and open the shown address
+
 ## Project structure
 
 ```
@@ -102,7 +114,9 @@ grow-feed-calculator/
 ├── data/
 │   └── hesi.json        # Hesi feeding charts
 ├── src/
+│   ├── app.js           # calculator page: inputs and result
 │   └── calculator.js    # findWeek and calculateDoses
+├── index.html           # calculator page
 ├── try.js               # quick manual check
 └── package.json         # enables ES modules
 ```
