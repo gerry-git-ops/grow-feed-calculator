@@ -9,11 +9,13 @@
 **A small, open calculator for fertilizer amounts – right on your phone.**<br>
 Pick a manufacturer, a schedule and a week, enter how much water you mix, and get the exact amount of every product.
 
-![Version](https://img.shields.io/badge/Version-0.5.0-a3e635)
+![Version](https://img.shields.io/badge/Version-0.6.0-a3e635)
 ![PWA](https://img.shields.io/badge/PWA-installable%20%C2%B7%20offline-059669)
-![Feeding charts](https://img.shields.io/badge/Feeding%20charts-Hesi%20%C2%B7%20BioBizz%20%C2%B7%20Canna-059669)
-![Languages](https://img.shields.io/badge/Languages-EN%20%C2%B7%20DE-8a2be2)
 ![License](https://img.shields.io/badge/License-GPL--3.0-blue)
+
+![Feeding charts](https://img.shields.io/badge/Feeding%20charts-Hesi-059669)![BioBizz](https://img.shields.io/badge/BioBizz-d97706)![Canna](https://img.shields.io/badge/Canna-2563eb)
+&nbsp;
+![Languages](https://img.shields.io/badge/Languages-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)
 
 ### 👉 [Open the app](https://gerry-git-ops.github.io/grow-feed-calculator/)
 
@@ -58,6 +60,7 @@ The app only **calculates**. It does not track or monitor your plants – that i
 - 📝 Usage notes per product and per schedule, straight from the manufacturer's chart
 - 🌍 **English and German**, chosen automatically from your device, switchable at any time
 - 🌗 **Light and dark mode**, follows your device until you switch it yourself
+- 🔔 **Update notice** when a new version is available – or automatic updates, your choice
 - 📲 **Installable** on your home screen and works **offline**
 - 🏷️ Version and change history right in the app
 
@@ -83,20 +86,30 @@ The app only **calculates**. It does not track or monitor your plants – that i
 
 ## 🔄 Updates and offline use
 
-- **Online:** every time you open the app, it briefly checks whether there is a newer version.
-  Only changed files are downloaded – if nothing changed, nothing is loaded.
-- **Offline:** the app uses the copy stored on your device and works as usual.
+- **The app always runs from the copy stored on your device** – online and offline.
+- **Online:** every time you open the app, it only loads the small version list (`changelog.json`)
+  and checks whether there is a newer version. If the app stays open, it checks again every 48 hours.
+- **Auto-Update on** (default): a new version is loaded and the app restarts right away.
+- **Auto-Update off:** the version turns yellow and a notice shows what is new. You choose
+  *Update now*, *Later* or *Don't show again for this version*. The app files are only loaded when you update.
 - **What is stored on your device:** the app files (about 0.8 MB), your settings for language and
-  light/dark mode, and your last choice of manufacturer, schedule, phase, week and water unit.
+  light/dark mode, your update settings, and your last choice of manufacturer, schedule, phase, week and water unit.
   Your water amount is **not** saved, and nothing is sent to a server.
 
-The installed version is shown at the bottom of the app – tap it to see what changed.
-
-> [!NOTE]
-> Planned: a switch to turn automatic updates off. You will then see a notice when a new version
-> is available and can decide yourself when to update.
+The installed version is shown at the bottom right of the app – green when it is up to date,
+yellow when a newer version is available. Tap it to see what changed. The **Auto-Update** switch
+sits right next to it.
 
 ## 🏷️ Changelog
+
+<details>
+<summary><b>0.6.0</b> · 2026-11-07</summary>
+
+- Notice when a new version is available
+- Auto-Update switch next to the version
+- Checks again every 48 hours while the app stays open
+
+</details>
 
 <details>
 <summary><b>0.5.0</b> · 2026-11-07</summary>
@@ -153,6 +166,8 @@ The same history is shown in the app. It is kept in [`changelog.json`](changelog
 | BioBizz | All-Mix | Propagation, growth, 8 weeks bloom, week 9 water only |
 | BioBizz | Light-Mix / Coco-Mix | Propagation, growth, 8 weeks bloom, week 9 water only |
 | Canna | Terra | Start, 2 growth stages, 4 bloom stages – with dose ranges |
+
+Missing your fertilizer? Let me know in an [issue](https://github.com/gerry-git-ops/grow-feed-calculator/issues).
 
 ## ⚙️ How it works
 
@@ -257,7 +272,8 @@ grow-feed-calculator/
 │   ├── calculator.js    # dose calculation
 │   ├── changelog.js     # version and history
 │   ├── i18n.js          # language, plurals, number and date format
-│   └── theme.js         # light / dark
+│   ├── theme.js         # light / dark
+│   └── update.js        # version check and updates
 ├── changelog.json       # version history
 ├── index.html           # calculator page
 ├── manifest.webmanifest # home screen app
