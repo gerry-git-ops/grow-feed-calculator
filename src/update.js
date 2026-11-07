@@ -24,12 +24,14 @@ const isOutdated = () => Boolean(latest) && newestVersion() !== installedVersion
 async function update() {
   updateButton.disabled = true;
   const worker = (await navigator.serviceWorker.ready).active;
-  navigator.serviceWorker.addEventListener("message", (event) => {
-    if (event.data === "updated") location.reload();
-    if (event.data === "update-failed") updateButton.disabled = false;
-  });
   worker.postMessage("update");
 }
+
+// Answer from the service worker after an update
+navigator.serviceWorker?.addEventListener("message", (event) => {
+  if (event.data === "updated") location.reload();
+  if (event.data === "update-failed") updateButton.disabled = false;
+});
 
 /** Show the version color and the notice in the current language. */
 export function showUpdate() {

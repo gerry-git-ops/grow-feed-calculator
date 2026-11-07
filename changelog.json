@@ -1,5 +1,17 @@
 [
     {
+        "version": "0.6.1",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "Small fix in the update process"
+            ],
+            "de": [
+                "Kleine Korrektur beim Aktualisieren"
+            ]
+        }
+    },
+    {
         "version": "0.6.0",
         "date": "2026-11-07",
         "changes": {
