@@ -306,3 +306,45 @@ body {
     font-weight: 600;
     white-space: nowrap;
 }
+
+
+/* Footer: version and history */
+.app-footer {
+    text-align: center;
+}
+
+.version {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.version::-webkit-details-marker {
+    display: none;
+}
+
+.changelog[open] {
+    padding: var(--space-l);
+    text-align: left;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-card);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.changelog[open] .version {
+    margin-bottom: var(--space-m);
+    text-align: center;
+}
+
+.changelog-version {
+    margin: var(--space-m) 0 var(--space-s);
+    font-size: 1rem;
+}
+
+.changelog-changes {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--muted);
+}

@@ -28,5 +28,9 @@
     },
     "theme": {
         "toggle": "Switch light / dark"
+    },
+    "footer": {
+        "version": "Version {version}",
+        "changes": "Changes"
     }
 }

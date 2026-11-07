@@ -28,5 +28,9 @@
     },
     "theme": {
         "toggle": "Hell / Dunkel umschalten"
+    },
+    "footer": {
+        "version": "Version {version}",
+        "changes": "Änderungen"
     }
 }

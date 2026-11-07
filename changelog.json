@@ -1,0 +1,64 @@
+[
+    {
+        "version": "0.4.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "New logo and app icon",
+                "Install the app on your home screen",
+                "Works offline"
+            ],
+            "de": [
+                "Neues Logo und App-Icon",
+                "App auf dem Home-Bildschirm installierbar",
+                "Funktioniert offline"
+            ]
+        }
+    },
+    {
+        "version": "0.3.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "Light and dark mode",
+                "English and German",
+                "Switches for language and theme"
+            ],
+            "de": [
+                "Hell- und Dunkelmodus",
+                "Englisch und Deutsch",
+                "Umschalter für Sprache und Design"
+            ]
+        }
+    },
+    {
+        "version": "0.2.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "First calculator page",
+                "Water in ml or L, with comma or dot",
+                "Optional and premixed products"
+            ],
+            "de": [
+                "Erste Rechner-Seite",
+                "Wasser in ml oder L, mit Komma oder Punkt",
+                "Optionale und vorgemischte Produkte"
+            ]
+        }
+    },
+    {
+        "version": "0.1.0",
+        "date": "2026-11-06",
+        "changes": {
+            "en": [
+                "Hesi soil feeding chart",
+                "Dose calculation"
+            ],
+            "de": [
+                "Hesi-Erde-Düngeschema",
+                "Berechnung der Mengen"
+            ]
+        }
+    }
+]

@@ -54,6 +54,11 @@ export function formatNumber(value, digits) {
     }).format(value);
 }
 
+/** Date in the format of the language, e.g. "2026-11-07" → "07.11.2026" in German. */
+export function formatDate(isoDate) {
+    return new Intl.DateTimeFormat(current, { dateStyle: "medium" }).format(new Date(isoDate));
+}
+
 /** Name or note of a product: current language, else English. */
 export function pick(textsPerLanguage) {
     return textsPerLanguage[current] ?? textsPerLanguage[fallback];

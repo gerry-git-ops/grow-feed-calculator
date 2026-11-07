@@ -1,9 +1,11 @@
 import { calculateDoses } from "./calculator.js";
 import { languages, detectLanguage, loadLanguage, saveLanguage, language, t, plural, formatNumber, pick } from "./i18n.js";
 import { initTheme } from "./theme.js";
+import { loadChangelog, showChangelog } from "./changelog.js";
 
 initTheme();
 await loadLanguage(detectLanguage());
+await loadChangelog();
 
 const response = await fetch("data/hesi.json");
 const brand = await response.json();
@@ -101,6 +103,7 @@ function updateTexts() {
     element.title = t(element.dataset.i18nLabel);
   }
   document.title = t("app.title");
+  showChangelog();
   for (const product of optionalProducts) {
     document.querySelector(`#name-${product.id}`).textContent = pick(product.name);
     if (product.note) {

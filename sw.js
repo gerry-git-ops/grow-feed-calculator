@@ -2,15 +2,17 @@
 // Online: always load the newest files and update the copy.
 // Offline: use the copy.
 // Raise the version when files are added, renamed or removed.
-const CACHE = "grow-feed-calculator-v1";
+const CACHE = "grow-feed-calculator-v2";
 
 const FILES = [
   "./",
   "index.html",
   "manifest.webmanifest",
+  "changelog.json",
   "css/style.css",
   "src/app.js",
   "src/calculator.js",
+  "src/changelog.js",
   "src/i18n.js",
   "src/theme.js",
   "data/hesi.json",
