@@ -9,11 +9,13 @@
 **Ein kleiner, offener Rechner für Düngermengen – direkt auf dem Handy.**<br>
 Hersteller, Schema und Woche wählen, die Wassermenge eingeben und für jedes Produkt die genaue Menge bekommen.
 
-![Version](https://img.shields.io/badge/Version-0.5.0-a3e635)
+![Version](https://img.shields.io/badge/Version-0.6.0-a3e635)
 ![PWA](https://img.shields.io/badge/PWA-installierbar%20%C2%B7%20offline-059669)
-![Düngeschemas](https://img.shields.io/badge/D%C3%BCngeschemas-Hesi%20%C2%B7%20BioBizz%20%C2%B7%20Canna-059669)
-![Sprachen](https://img.shields.io/badge/Sprachen-EN%20%C2%B7%20DE-8a2be2)
 ![Lizenz](https://img.shields.io/badge/Lizenz-GPL--3.0-blue)
+
+![Düngeschemas](https://img.shields.io/badge/D%C3%BCngeschemas-Hesi-059669)![BioBizz](https://img.shields.io/badge/BioBizz-d97706)![Canna](https://img.shields.io/badge/Canna-2563eb)
+&nbsp;
+![Sprachen](https://img.shields.io/badge/Sprachen-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)
 
 ### 👉 [App öffnen](https://gerry-git-ops.github.io/grow-feed-calculator/)
 
@@ -58,6 +60,7 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
 - 📝 Anwendungshinweise je Produkt und je Schema, direkt aus dem Düngeschema des Herstellers
 - 🌍 **Englisch und Deutsch**, automatisch passend zum Gerät, jederzeit umschaltbar
 - 🌗 **Hell- und Dunkelmodus**, folgt dem Gerät, bis du selbst umschaltest
+- 🔔 **Update-Hinweis**, wenn eine neue Version da ist – oder automatische Updates, du entscheidest
 - 📲 **Installierbar** auf dem Home-Bildschirm und läuft **offline**
 - 🏷️ Version und Änderungsverlauf direkt in der App
 
@@ -83,20 +86,29 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
 
 ## 🔄 Updates und Offline-Betrieb
 
-- **Online:** Bei jedem Öffnen prüft die App kurz, ob es eine neuere Version gibt.
-  Geladen werden nur geänderte Dateien – hat sich nichts geändert, wird nichts geladen.
-- **Offline:** Die App nutzt die auf dem Gerät gespeicherte Kopie und funktioniert wie gewohnt.
+- **Die App läuft immer aus der auf dem Gerät gespeicherten Kopie** – online wie offline.
+- **Online:** Bei jedem Öffnen lädt die App nur die kleine Versionsliste (`changelog.json`) und prüft,
+  ob es eine neuere Version gibt. Bleibt die App offen, prüft sie alle 48 Stunden erneut.
+- **Auto-Update an** (Standard): Eine neue Version wird geladen und die App startet gleich neu.
+- **Auto-Update aus:** Die Version wird gelb, und ein Hinweis zeigt, was neu ist. Du wählst
+  *Jetzt aktualisieren*, *Später* oder *Für diese Version nicht mehr anzeigen*. Die App-Dateien werden erst beim Aktualisieren geladen.
 - **Was auf dem Gerät gespeichert wird:** die App-Dateien (etwa 0,8 MB), deine Einstellungen für
-  Sprache und Hell/Dunkel und deine letzte Auswahl von Hersteller, Schema, Phase, Woche und Wasser-Einheit.
+  Sprache, Hell/Dunkel und Updates und deine letzte Auswahl von Hersteller, Schema, Phase, Woche und Wasser-Einheit.
   Deine Wassermenge wird **nicht** gespeichert, und nichts wird an einen Server geschickt.
 
-Unten in der App steht die installierte Version – antippen zeigt, was sich geändert hat.
-
-> [!NOTE]
-> Geplant: ein Schalter, um automatische Updates auszuschalten. Dann erscheint ein Hinweis, wenn eine
-> neue Version da ist, und du entscheidest selbst, wann du aktualisierst.
+Unten rechts in der App steht die installierte Version – grün, wenn sie aktuell ist, gelb, wenn es
+eine neuere gibt. Antippen zeigt, was sich geändert hat. Direkt daneben sitzt der Schalter **Auto-Update**.
 
 ## 🏷️ Änderungsverlauf
+
+<details>
+<summary><b>0.6.0</b> · 07.11.2026</summary>
+
+- Hinweis, wenn eine neue Version verfügbar ist
+- Auto-Update-Schalter neben der Version
+- Prüft alle 48 Stunden erneut, solange die App offen bleibt
+
+</details>
 
 <details>
 <summary><b>0.5.0</b> · 07.11.2026</summary>
@@ -153,6 +165,8 @@ Derselbe Verlauf steht in der App. Er liegt in [`changelog.json`](../changelog.j
 | BioBizz | All-Mix | Anzucht, Wuchs, 8 Wochen Blüte, Woche 9 nur Wasser |
 | BioBizz | Light-Mix / Coco-Mix | Anzucht, Wuchs, 8 Wochen Blüte, Woche 9 nur Wasser |
 | Canna | Terra | Start, 2 Wuchs-Abschnitte, 4 Blüte-Abschnitte – mit Mengen-Spannen |
+
+Dein Dünger fehlt? Sag mir Bescheid in einem [Issue](https://github.com/gerry-git-ops/grow-feed-calculator/issues).
 
 ## ⚙️ So funktioniert es
 
@@ -257,7 +271,8 @@ grow-feed-calculator/
 │   ├── calculator.js    # Berechnung der Mengen
 │   ├── changelog.js     # Version und Verlauf
 │   ├── i18n.js          # Sprache, Mehrzahl, Zahlen- und Datumsformat
-│   └── theme.js         # Hell / Dunkel
+│   ├── theme.js         # Hell / Dunkel
+│   └── update.js        # Versionsprüfung und Updates
 ├── changelog.json       # Versionsverlauf
 ├── index.html           # Rechner-Seite
 ├── manifest.webmanifest # App für den Home-Bildschirm
