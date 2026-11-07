@@ -1,4 +1,9 @@
 import { calculateDoses } from "./calculator.js";
+import { languages, detectLanguage, loadLanguage, saveLanguage, language, t, plural, formatNumber, pick } from "./i18n.js";
+import { initTheme } from "./theme.js";
+
+initTheme();
+await loadLanguage(detectLanguage());
 
 const response = await fetch("data/hesi.json");
 const brand = await response.json();
@@ -6,7 +11,30 @@ const schedule = brand.schedules[0];
 
 const phaseBox = document.querySelector("#phase");
 const weekSelect = document.querySelector("#week");
+const optionalBox = document.querySelector("#optional");
+const waterInput = document.querySelector("#water");
+const unitSelect = document.querySelector("#water-unit");
+const resultList = document.querySelector("#result");
+const waterInfo = document.querySelector("#water-info");
 
+// Language switch
+const languageSelect = document.querySelector("#language");
+
+for (const lang of languages) {
+  const option = document.createElement("option");
+  option.value = lang;
+  option.textContent = lang.toUpperCase();
+  languageSelect.append(option);
+}
+languageSelect.value = language();
+
+languageSelect.addEventListener("change", async () => {
+  saveLanguage(languageSelect.value);
+  await loadLanguage(languageSelect.value);
+  updateTexts();
+});
+
+// Phase boxes
 const phases = [...new Set(schedule.weeks.map((w) => w.phase))];
 
 for (const phase of phases) {
@@ -18,7 +46,7 @@ for (const phase of phases) {
   radio.className = "choice-input";
   const box = document.createElement("span");
   box.className = "choice-box";
-  box.textContent = phase;
+  box.dataset.i18n = `phase.${phase}`;
   label.append(radio, box);
   phaseBox.append(label);
 }
@@ -33,39 +61,63 @@ function fillWeeks(phase) {
   }
 }
 
-const optionalBox = document.querySelector("#optional");
+phaseBox.addEventListener("change", (event) => fillWeeks(event.target.value));
+phaseBox.querySelector("input").checked = true;
+fillWeeks(phases[0]);
 
-for (const product of schedule.products.filter((p) => p.optional)) {
+// Optional products
+const optionalProducts = schedule.products.filter((p) => p.optional);
+
+for (const product of optionalProducts) {
   const label = document.createElement("label");
   label.className = "option";
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.value = product.id;
-  label.append(checkbox, product.name.en);
+  const name = document.createElement("span");
+  name.id = `name-${product.id}`;
+  label.append(checkbox, name);
   optionalBox.append(label);
 
   if (product.note) {
     const note = document.createElement("p");
     note.className = "note";
-    note.textContent = product.note.en;
+    note.id = `note-${product.id}`;
     optionalBox.append(note);
   }
 }
 
-phaseBox.addEventListener("change", (event) => fillWeeks(event.target.value));
+// Texts in the current language
+function updateTexts() {
+  for (const element of document.querySelectorAll("[data-i18n]")) {
+    element.textContent = t(element.dataset.i18n);
+  }
+  for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
+    element.placeholder = t(element.dataset.i18nPlaceholder);
+  }
+  for (const element of document.querySelectorAll("[data-i18n-label]")) {
+    element.ariaLabel = t(element.dataset.i18nLabel);
+    element.title = t(element.dataset.i18nLabel);
+  }
+  document.title = t("app.title");
+  for (const product of optionalProducts) {
+    document.querySelector(`#name-${product.id}`).textContent = pick(product.name);
+    if (product.note) {
+      document.querySelector(`#note-${product.id}`).textContent = pick(product.note);
+    }
+  }
+  showResult();
+}
 
-phaseBox.querySelector("input").checked = true;
-fillWeeks(phases[0]);
-
-const waterInput = document.querySelector("#water");
-const unitSelect = document.querySelector("#water-unit");
-const resultList = document.querySelector("#result");
-const waterInfo = document.querySelector("#water-info");
-
+// Result
 function readLiters() {
   const value = Number(waterInput.value.replace(",", "."));
   if (!(value > 0)) return null;
   return unitSelect.value === "ml" ? value / 1000 : value;
+}
+
+function unitText(unit, amount) {
+  return unit === "drops" ? plural("unit.drops", amount) : t(`unit.${unit}`);
 }
 
 function showResult() {
@@ -83,26 +135,29 @@ function showResult() {
   for (const dose of doses) {
     const product = schedule.products.find((p) => p.id === dose.productId);
     if (product.premix) {
-      premixed.push(`${dose.amount.toFixed(2)} ${dose.unit} ${product.name.en}`);
+      const amount = formatNumber(dose.amount, 2);
+      premixed.push(`${amount} ${unitText(dose.unit, dose.amount)} ${pick(product.name)}`);
       continue;
     }
     const digits = dose.unit === "drops" ? 0 : 1;
     const item = document.createElement("li");
     item.className = "dose";
     const name = document.createElement("span");
-    name.textContent = product.name.en;
+    name.textContent = pick(product.name);
     const amount = document.createElement("span");
     amount.className = "dose-amount";
-    amount.textContent = `${dose.amount.toFixed(digits)} ${dose.unit}`;
+    amount.textContent = `${formatNumber(dose.amount, digits)} ${unitText(dose.unit, dose.amount)}`;
     item.append(name, amount);
     resultList.append(item);
   }
 
-  const amount = `${waterInput.value} ${unitSelect.selectedOptions[0].textContent}`;
+  const amount = `${waterInput.value} ${t(`unit.${unitSelect.value}`)}`;
   waterInfo.textContent = premixed.length
-    ? `${amount} premixed water with ${premixed.join(", ")}`
-    : `${amount} clear water`;
+    ? t("water.premixed", { amount, products: premixed.join(", ") })
+    : t("water.clear", { amount });
 }
 
 document.addEventListener("input", showResult);
 document.addEventListener("change", showResult);
+
+updateTexts();

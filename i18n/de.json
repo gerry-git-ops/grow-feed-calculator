@@ -1,0 +1,32 @@
+{
+    "app": {
+        "title": "Dünger-Rechner"
+    },
+    "label": {
+        "phase": "Phase",
+        "week": "Woche",
+        "water": "Wasser",
+        "language": "Sprache"
+    },
+    "phase": {
+        "start": "Sämling / Steckling",
+        "growth": "Wuchs",
+        "bloom": "Blüte"
+    },
+    "unit": {
+        "ml": "ml",
+        "l": "L",
+        "drops": {
+            "one": "Tropfen",
+            "other": "Tropfen"
+        }
+    },
+    "water": {
+        "placeholder": "z. B. 700",
+        "clear": "{amount} klares Wasser",
+        "premixed": "{amount} vorgemischtes Wasser mit {products}"
+    },
+    "theme": {
+        "toggle": "Hell / Dunkel umschalten"
+    }
+}

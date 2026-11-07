@@ -1,0 +1,32 @@
+{
+    "app": {
+        "title": "Grow Feed Calculator"
+    },
+    "label": {
+        "phase": "Phase",
+        "week": "Week",
+        "water": "Water",
+        "language": "Language"
+    },
+    "phase": {
+        "start": "Seedling / Clone",
+        "growth": "Growth",
+        "bloom": "Bloom"
+    },
+    "unit": {
+        "ml": "ml",
+        "l": "L",
+        "drops": {
+            "one": "drop",
+            "other": "drops"
+        }
+    },
+    "water": {
+        "placeholder": "e.g. 700",
+        "clear": "{amount} clear water",
+        "premixed": "{amount} premixed water with {products}"
+    },
+    "theme": {
+        "toggle": "Switch light / dark"
+    }
+}

@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="google" content="notranslate">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Grow Feed Calculator</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grow Feed Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <main class="app">
-    <header class="app-header">
-      <h1 class="app-title">Grow Feed Calculator</h1>
-    </header>
+    <main class="app">
+        <header class="app-header">
+            <h1 class="app-title" data-i18n="app.title"></h1>
+            <div class="app-controls">
+                <select id="language" class="input input-small" data-i18n-label="label.language"></select>
+                <button id="theme" class="icon-button" type="button" data-i18n-label="theme.toggle"></button>
+            </div>
+        </header>
 
-    <section class="card">
-      <fieldset id="phase" class="choice-group">
-        <legend class="label">Phase</legend>
-      </fieldset>
+        <section class="card">
+            <fieldset id="phase" class="choice-group">
+                <legend class="label" data-i18n="label.phase"></legend>
+            </fieldset>
 
-      <div class="field">
-        <label for="week" class="label">Week</label>
-        <select id="week" class="input"></select>
-      </div>
-    </section>
+            <div class="field">
+                <label for="week" class="label" data-i18n="label.week"></label>
+                <select id="week" class="input"></select>
+            </div>
+        </section>
 
-    <section class="card">
-      <div class="field">
-        <label for="water" class="label">Water</label>
-        <div class="input-row">
-          <input id="water" class="input" type="text" inputmode="decimal" placeholder="e.g. 700">
-          <select id="water-unit" class="input input-unit">
-            <option value="ml">ml</option>
-            <option value="l">L</option>
-          </select>
-        </div>
-      </div>
+        <section class="card">
+            <div class="field">
+                <label for="water" class="label" data-i18n="label.water"></label>
+                <div class="input-row">
+                    <input id="water" class="input" type="text" inputmode="decimal"
+                        data-i18n-placeholder="water.placeholder">
+                    <select id="water-unit" class="input input-unit">
+                        <option value="ml" data-i18n="unit.ml"></option>
+                        <option value="l" data-i18n="unit.l"></option>
+                    </select>
+                </div>
+            </div>
 
-      <div id="optional" class="options"></div>
-    </section>
+            <div id="optional" class="options"></div>
+        </section>
 
-    <section class="card">
-      <p id="water-info" class="water-info"></p>
-      <ul id="result" class="dose-list"></ul>
-    </section>
-  </main>
+        <section class="card">
+            <p id="water-info" class="water-info"></p>
+            <ul id="result" class="dose-list"></ul>
+        </section>
+    </main>
 
-  <script type="module" src="src/app.js"></script>
+    <script type="module" src="src/app.js"></script>
 </body>
+
 </html>
