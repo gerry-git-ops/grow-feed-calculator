@@ -1,5 +1,21 @@
 [
     {
+        "version": "0.6.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "Notice when a new version is available",
+                "Auto-Update switch next to the version",
+                "Checks again every 48 hours while the app stays open"
+            ],
+            "de": [
+                "Hinweis, wenn eine neue Version verfügbar ist",
+                "Auto-Update-Schalter neben der Version",
+                "Prüft alle 48 Stunden erneut, solange die App offen bleibt"
+            ]
+        }
+    },
+    {
         "version": "0.5.0",
         "date": "2026-11-07",
         "changes": {

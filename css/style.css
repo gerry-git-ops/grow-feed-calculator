@@ -27,6 +27,8 @@
     --muted: #6b7280;
     --accent: #059669;
     --accent-glow: rgb(5 150 105 / 0.25);
+    --warning: #ca8a04;
+    --warning-glow: rgb(202 138 4 / 0.25);
     --on-accent: #ffffff;
     --card-bg: rgb(255 255 255 / 0.8);
     --card-border: rgb(229 231 235 / 0.6);
@@ -56,6 +58,8 @@
     --muted: #9ca3af;
     --accent: #a3e635;
     --accent-glow: rgb(163 230 53 / 0.2);
+    --warning: #facc15;
+    --warning-glow: rgb(250 204 21 / 0.2);
     --on-accent: #030712;
     --card-bg: rgb(17 24 39 / 0.6);
     --card-border: rgb(31 41 55 / 0.5);
@@ -172,9 +176,9 @@ body {
 }
 
 .field-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-s);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-s);
 }
 
 .input-row {
@@ -289,16 +293,16 @@ body {
 
 /* Notes for the whole schedule */
 .schedule-notes {
-  display: grid;
-  gap: var(--space-s);
-  margin: 0;
-  padding-left: 1.25rem;
-  color: var(--muted);
-  font-size: 0.875rem;
+    display: grid;
+    gap: var(--space-s);
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--muted);
+    font-size: 0.875rem;
 }
 
 .schedule-notes:empty {
-  display: none;
+    display: none;
 }
 
 /* Result */
@@ -339,10 +343,82 @@ body {
     white-space: nowrap;
 }
 
+/* Buttons */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+}
+
+.button {
+    padding: var(--space-s) var(--space-m);
+    background: var(--input-bg);
+    color: var(--text);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-input);
+    font: inherit;
+    cursor: pointer;
+    transition: border-color var(--transition);
+}
+
+.button:hover,
+.button:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.button-primary {
+    background: var(--accent);
+    color: var(--on-accent);
+    border-color: var(--accent);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+.link-button {
+    justify-self: start;
+    padding: 0;
+    background: none;
+    color: var(--muted);
+    border: 0;
+    font: inherit;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Update notice */
+.update-notice {
+    border-color: var(--warning);
+    box-shadow: 0 0 12px var(--warning-glow), var(--card-shadow);
+}
+
+.update-title {
+    margin: 0;
+    color: var(--warning);
+    font-size: 1rem;
+}
 
 /* Footer: version and history */
 .app-footer {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-s);
+}
+
+/* Small switch for automatic updates, glows when on */
+.auto-toggle .choice-box {
+    padding: 0.125rem var(--space-s);
+    font-size: 0.75rem;
+}
+
+.auto-toggle .choice-input:checked+.choice-box {
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .version {
@@ -373,6 +449,14 @@ body {
 .changelog-version {
     margin: var(--space-m) 0 var(--space-s);
     font-size: 1rem;
+}
+
+.version-outdated {
+    color: var(--warning);
+}
+
+.auto-update {
+    margin-top: var(--space-l);
 }
 
 .changelog-changes {

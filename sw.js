@@ -1,8 +1,8 @@
 // Offline support: keeps a copy of all app files on the device.
-// Online: always load the newest files and update the copy.
-// Offline: use the copy.
-// Raise the version when files are added, renamed or removed.
-const CACHE = "grow-feed-calculator-v0.5.0";
+// The app always runs from this copy. New files are only loaded
+// when the app asks for it (see src/update.js).
+// Add new files to FILES, otherwise they are not stored.
+const CACHE = "grow-feed-calculator";
 
 const FILES = [
   "./",
@@ -15,6 +15,7 @@ const FILES = [
   "src/changelog.js",
   "src/i18n.js",
   "src/theme.js",
+  "src/update.js",
   "data/index.json",
   "data/hesi.json",
   "data/biobizz.json",
@@ -31,12 +32,31 @@ const FILES = [
   "fonts/geist/GeistMono-Variable.woff2",
 ];
 
+/** Load all files from the server and replace the stored copy. */
+async function download() {
+  const responses = await Promise.all(
+    FILES.map(async (file) => {
+      const response = await fetch(file, { cache: "no-cache" });
+      if (!response.ok) throw new Error(`${file}: ${response.status}`);
+      return [file, response];
+    })
+  );
+  const cache = await caches.open(CACHE);
+  await Promise.all(responses.map(([file, response]) => cache.put(file, response)));
+}
+
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(FILES)));
+  // Only on the first install: there is no copy yet
+  event.waitUntil(
+    caches.open(CACHE).then(async (cache) => {
+      if ((await cache.keys()).length === 0) await download();
+    })
+  );
   self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
+  // Remove copies with other names, e.g. from older versions
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))
@@ -47,13 +67,19 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  // Version check (changelog.json?latest) always goes to the server
+  if (new URL(event.request.url).searchParams.has("latest")) return;
   event.respondWith(
-    fetch(event.request, { cache: "no-cache" })
-      .then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-        return response;
-      })
-      .catch(() => caches.match(event.request, { ignoreSearch: true }))
+    caches.match(event.request, { ignoreSearch: true }).then((copy) => copy ?? fetch(event.request))
+  );
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data !== "update") return;
+  event.waitUntil(
+    download().then(
+      () => event.source.postMessage("updated"),
+      () => event.source.postMessage("update-failed")
+    )
   );
 });

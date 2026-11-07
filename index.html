@@ -24,6 +24,16 @@
             <h1 class="app-title" data-i18n="app.title"></h1>
         </header>
 
+        <section id="update-notice" class="card update-notice" hidden>
+            <h2 id="update-title" class="update-title"></h2>
+            <ul id="update-changes" class="changelog-changes"></ul>
+            <div class="button-row">
+                <button id="update-now" class="button button-primary" type="button" data-i18n="update.now"></button>
+                <button id="update-later" class="button" type="button" data-i18n="update.later"></button>
+            </div>
+            <button id="update-hide" class="link-button" type="button" data-i18n="update.hide"></button>
+        </section>
+
         <section class="card">
             <div class="field-row">
                 <div class="field">
@@ -69,6 +79,10 @@
         </section>
 
         <footer class="app-footer">
+            <label class="auto-toggle">
+                <input id="auto-update" class="choice-input" type="checkbox" data-i18n-label="update.auto">
+                <span class="choice-box" data-i18n="update.autoShort"></span>
+            </label>
             <details class="changelog">
                 <summary id="version" class="version"></summary>
                 <h2 class="label" data-i18n="footer.changes"></h2>

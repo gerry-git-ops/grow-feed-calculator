@@ -37,5 +37,13 @@
     "footer": {
         "version": "Version {version}",
         "changes": "Changes"
+    },
+    "update": {
+        "available": "Version {version} is available",
+        "now": "Update now",
+        "later": "Later",
+        "hide": "Don't show again for this version",
+        "auto": "Update automatically",
+        "autoShort": "Auto-Update"
     }
 }

@@ -10,6 +10,11 @@ export async function loadChangelog() {
     entries = await (await fetch("changelog.json")).json();
 }
 
+/** Version of the installed app files. */
+export function installedVersion() {
+    return entries[0].version;
+}
+
 /** Show the installed version and the history in the current language. */
 export function showChangelog() {
     versionText.textContent = t("footer.version", { version: entries[0].version });

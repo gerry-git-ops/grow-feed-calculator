@@ -2,6 +2,7 @@ import { calculateDoses, productsInWeek } from "./calculator.js";
 import { languages, detectLanguage, loadLanguage, saveLanguage, language, t, plural, formatNumber, pick } from "./i18n.js";
 import { initTheme } from "./theme.js";
 import { loadChangelog, showChangelog } from "./changelog.js";
+import { checkForUpdate, showUpdate } from "./update.js";
 
 initTheme();
 await loadLanguage(detectLanguage());
@@ -220,6 +221,7 @@ function updateTexts() {
   }
   document.title = t("app.title");
   showChangelog();
+  showUpdate();
   fillSchedules();
   fillWeeks(currentPhase(), true);
   showScheduleNotes();
@@ -309,7 +311,5 @@ brandSelect.value = brand.brand.id;
 if (saved.unit) unitSelect.value = saved.unit;
 buildSchedule(saved.phase, saved.week);
 
-// Offline support
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js");
-}
+// Offline support and update check
+checkForUpdate();
