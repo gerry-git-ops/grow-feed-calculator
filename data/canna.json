@@ -1,0 +1,246 @@
+{
+    "schemaVersion": 2,
+    "brand": {
+        "id": "canna",
+        "name": "Canna"
+    },
+    "schedules": [
+        {
+            "id": "terra",
+            "name": {
+                "en": "Terra",
+                "de": "Terra"
+            },
+            "medium": "soil",
+            "notes": [
+                {
+                    "en": "The doses are guidelines from the manufacturer. The right amount also depends on plant, temperature, humidity and substrate.",
+                    "de": "Die Mengen sind Richtwerte des Herstellers. Die passende Menge hängt auch von Pflanze, Temperatur, Luftfeuchtigkeit und Substrat ab."
+                },
+                {
+                    "en": "The manufacturer recommends watching EC and pH. This app does not take them into account.",
+                    "de": "Der Hersteller empfiehlt, auf EC- und pH-Wert zu achten. Diese App berücksichtigt das nicht."
+                }
+            ],
+            "products": [
+                {
+                    "id": "terra-vega",
+                    "name": {
+                        "en": "Terra Vega"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 10
+                },
+                {
+                    "id": "terra-flores",
+                    "name": {
+                        "en": "Terra Flores"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 10
+                },
+                {
+                    "id": "rhizotonic",
+                    "name": {
+                        "en": "Rhizotonic"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 10,
+                    "optional": true
+                },
+                {
+                    "id": "cannazym",
+                    "name": {
+                        "en": "Cannazym"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 10,
+                    "optional": true,
+                    "note": {
+                        "en": "Double the dose to 50 ml per 10 L if the substrate is reused.",
+                        "de": "Dosis auf 50 ml pro 10 L verdoppeln, wenn das Substrat wiederverwendet wird."
+                    }
+                },
+                {
+                    "id": "cannaboost",
+                    "name": {
+                        "en": "Cannaboost"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 10,
+                    "optional": true,
+                    "note": {
+                        "en": "Standard 20 ml per 10 L – increase to a maximum of 40 ml per 10 L for extra flowering power.",
+                        "de": "Standard 20 ml pro 10 L – für mehr Blühkraft auf maximal 40 ml pro 10 L erhöhen."
+                    }
+                },
+                {
+                    "id": "pk-13-14",
+                    "name": {
+                        "en": "PK 13/14"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 10,
+                    "optional": true
+                }
+            ],
+            "weeks": [
+                {
+                    "phase": "start",
+                    "week": 1,
+                    "label": {
+                        "en": "Start / rooting",
+                        "de": "Start / Bewurzelung"
+                    },
+                    "duration": {
+                        "en": "3–5 days",
+                        "de": "3–5 Tage"
+                    },
+                    "doses": {
+                        "terra-vega": [
+                            15,
+                            35
+                        ],
+                        "rhizotonic": 40
+                    }
+                },
+                {
+                    "phase": "growth",
+                    "week": 1,
+                    "label": {
+                        "en": "Vegetative I",
+                        "de": "Wachstum I"
+                    },
+                    "duration": {
+                        "en": "0–3 weeks",
+                        "de": "0–3 Wochen"
+                    },
+                    "doses": {
+                        "terra-vega": [
+                            30,
+                            50
+                        ],
+                        "rhizotonic": 20,
+                        "cannazym": 25
+                    }
+                },
+                {
+                    "phase": "growth",
+                    "week": 2,
+                    "label": {
+                        "en": "Vegetative II",
+                        "de": "Wachstum II"
+                    },
+                    "duration": {
+                        "en": "2–4 weeks",
+                        "de": "2–4 Wochen"
+                    },
+                    "doses": {
+                        "terra-vega": [
+                            35,
+                            55
+                        ],
+                        "rhizotonic": 20,
+                        "cannazym": 25,
+                        "cannaboost": 20
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 1,
+                    "label": {
+                        "en": "Generative I",
+                        "de": "Blüte I"
+                    },
+                    "duration": {
+                        "en": "2–3 weeks",
+                        "de": "2–3 Wochen"
+                    },
+                    "doses": {
+                        "terra-flores": [
+                            50,
+                            70
+                        ],
+                        "rhizotonic": 5,
+                        "cannazym": 25,
+                        "cannaboost": [
+                            20,
+                            40
+                        ]
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 2,
+                    "label": {
+                        "en": "Generative II",
+                        "de": "Blüte II"
+                    },
+                    "duration": {
+                        "en": "1 week",
+                        "de": "1 Woche"
+                    },
+                    "doses": {
+                        "terra-flores": [
+                            50,
+                            70
+                        ],
+                        "rhizotonic": 5,
+                        "cannazym": 25,
+                        "cannaboost": [
+                            20,
+                            40
+                        ],
+                        "pk-13-14": 15
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 3,
+                    "label": {
+                        "en": "Generative III",
+                        "de": "Blüte III"
+                    },
+                    "duration": {
+                        "en": "2–3 weeks",
+                        "de": "2–3 Wochen"
+                    },
+                    "doses": {
+                        "terra-flores": [
+                            40,
+                            60
+                        ],
+                        "rhizotonic": 5,
+                        "cannazym": 25,
+                        "cannaboost": [
+                            20,
+                            40
+                        ]
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 4,
+                    "label": {
+                        "en": "Generative IV – ripening",
+                        "de": "Blüte IV – Reife"
+                    },
+                    "duration": {
+                        "en": "1–2 weeks",
+                        "de": "1–2 Wochen"
+                    },
+                    "doses": {
+                        "cannazym": [
+                            25,
+                            50
+                        ],
+                        "cannaboost": [
+                            20,
+                            40
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -25,6 +25,16 @@
         </header>
 
         <section class="card">
+            <div class="field-row">
+                <div class="field">
+                    <label for="brand" class="label" data-i18n="label.brand"></label>
+                    <select id="brand" class="input"></select>
+                </div>
+                <div class="field">
+                    <label for="schedule" class="label" data-i18n="label.schedule"></label>
+                    <select id="schedule" class="input"></select>
+                </div>
+            </div>
             <fieldset id="phase" class="choice-group">
                 <legend class="label" data-i18n="label.phase"></legend>
             </fieldset>
@@ -33,6 +43,8 @@
                 <label for="week" class="label" data-i18n="label.week"></label>
                 <select id="week" class="input"></select>
             </div>
+
+            <ul id="schedule-notes" class="schedule-notes"></ul>
         </section>
 
         <section class="card">

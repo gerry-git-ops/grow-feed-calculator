@@ -1,5 +1,23 @@
 [
     {
+        "version": "0.5.0",
+        "date": "2026-11-07",
+        "changes": {
+            "en": [
+                "New feeding charts: BioBizz (All-Mix, Light-Mix / Coco-Mix) and Canna Terra",
+                "Choose brand and schedule – the app remembers your last choice",
+                "Dose ranges, either-or products and notes per schedule",
+                "Optional products only show up in weeks where they are used"
+            ],
+            "de": [
+                "Neue Düngeschemas: BioBizz (All-Mix, Light-Mix / Coco-Mix) und Canna Terra",
+                "Hersteller und Schema wählbar – die App merkt sich die letzte Auswahl",
+                "Mengen-Spannen, Entweder-oder-Produkte und Hinweise je Schema",
+                "Optionale Produkte erscheinen nur in Wochen, in denen sie vorkommen"
+            ]
+        }
+    },
+    {
         "version": "0.4.0",
         "date": "2026-11-07",
         "changes": {

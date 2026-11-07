@@ -4,8 +4,12 @@
     },
     "label": {
         "phase": "Phase",
+        "stage": "Stage",
         "week": "Week",
         "water": "Water",
+        "choice": "Choose one",
+        "brand": "Brand",
+        "schedule": "Schedule",
         "language": "Language"
     },
     "phase": {
@@ -16,6 +20,7 @@
     "unit": {
         "ml": "ml",
         "l": "L",
+        "g": "g",
         "drops": {
             "one": "drop",
             "other": "drops"

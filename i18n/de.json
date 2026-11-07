@@ -4,8 +4,12 @@
     },
     "label": {
         "phase": "Phase",
+        "stage": "Abschnitt",
         "week": "Woche",
         "water": "Wasser",
+        "choice": "Eins wählen",
+        "brand": "Hersteller",
+        "schedule": "Schema",
         "language": "Sprache"
     },
     "phase": {
@@ -16,6 +20,7 @@
     "unit": {
         "ml": "ml",
         "l": "L",
+        "g": "g",
         "drops": {
             "one": "Tropfen",
             "other": "Tropfen"

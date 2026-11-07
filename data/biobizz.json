@@ -1,0 +1,495 @@
+{
+    "schemaVersion": 2,
+    "brand": {
+        "id": "biobizz",
+        "name": "BioBizz"
+    },
+    "schedules": [
+        {
+            "id": "all-mix",
+            "name": {
+                "en": "All-Mix",
+                "de": "All-Mix"
+            },
+            "medium": "soil",
+            "notes": [
+                {
+                    "en": "The growth phase can be extended as long as you like.",
+                    "de": "Die Wachstumsphase kann beliebig verlängert werden."
+                },
+                {
+                    "en": "Week 9: water only. Week 10: harvest.",
+                    "de": "Woche 9: nur Wasser. Woche 10: Ernte."
+                }
+            ],
+            "products": [
+                {
+                    "id": "root-juice",
+                    "name": {
+                        "en": "Root Juice"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1
+                },
+                {
+                    "id": "microbes",
+                    "name": {
+                        "en": "Microbes"
+                    },
+                    "unit": "g",
+                    "baseVolumeLiters": 1,
+                    "note": {
+                        "en": "Use once a week – twice with high nutrient demand in growth and bloom.",
+                        "de": "Einmal pro Woche anwenden – bei hohem Nährstoffbedarf in Wachstum und Blüte zweimal."
+                    }
+                },
+                {
+                    "id": "bio-grow",
+                    "name": {
+                        "en": "Bio-Grow"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "group": "base"
+                },
+                {
+                    "id": "fish-mix",
+                    "name": {
+                        "en": "Fish-Mix"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "group": "base",
+                    "note": {
+                        "en": "Can be used during growth – switch to Bio-Grow when you start the bloom phase.",
+                        "de": "Kann in der Wachstumsphase verwendet werden – zur Blüte auf Bio-Grow umsteigen."
+                    }
+                },
+                {
+                    "id": "bio-bloom",
+                    "name": {
+                        "en": "Bio-Bloom"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1
+                },
+                {
+                    "id": "top-max",
+                    "name": {
+                        "en": "Top-Max"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                },
+                {
+                    "id": "bio-heaven",
+                    "name": {
+                        "en": "Bio-Heaven"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                },
+                {
+                    "id": "acti-vera",
+                    "name": {
+                        "en": "Acti-Vera"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                }
+            ],
+            "weeks": [
+                {
+                    "phase": "start",
+                    "week": 1,
+                    "doses": {
+                        "root-juice": 4,
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-heaven": 2,
+                        "acti-vera": 2
+                    }
+                },
+                {
+                    "phase": "growth",
+                    "week": 1,
+                    "doses": {
+                        "root-juice": 4,
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-heaven": 2,
+                        "acti-vera": 2
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 1,
+                    "doses": {
+                        "root-juice": 2,
+                        "microbes": 0.2,
+                        "bio-grow": 3,
+                        "fish-mix": 3,
+                        "bio-bloom": 1,
+                        "top-max": 1,
+                        "bio-heaven": 2,
+                        "acti-vera": 3
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 2,
+                    "doses": {
+                        "root-juice": 2,
+                        "microbes": 0.2,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 2,
+                        "top-max": 2,
+                        "bio-heaven": 3,
+                        "acti-vera": 4
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 3,
+                    "doses": {
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 3,
+                        "top-max": 2,
+                        "bio-heaven": 4,
+                        "acti-vera": 5
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 4,
+                    "doses": {
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 3,
+                        "top-max": 3,
+                        "bio-heaven": 5,
+                        "acti-vera": 5
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 5,
+                    "doses": {
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 3,
+                        "top-max": 3,
+                        "bio-heaven": 5,
+                        "acti-vera": 3
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 6,
+                    "doses": {
+                        "microbes": 0.2,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 4,
+                        "top-max": 4,
+                        "bio-heaven": 4,
+                        "acti-vera": 3
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 7,
+                    "doses": {
+                        "microbes": 0.2,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 4,
+                        "top-max": 4,
+                        "bio-heaven": 4,
+                        "acti-vera": 2
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 8,
+                    "doses": {
+                        "microbes": 0.2,
+                        "bio-grow": 1,
+                        "fish-mix": 1,
+                        "bio-bloom": 4,
+                        "top-max": 4,
+                        "bio-heaven": 3,
+                        "acti-vera": 1
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 9,
+                    "doses": {}
+                }
+            ]
+        },
+        {
+            "id": "light-mix",
+            "name": {
+                "en": "Light-Mix / Coco-Mix",
+                "de": "Light-Mix / Coco-Mix"
+            },
+            "medium": "soil-or-coco",
+            "notes": [
+                {
+                    "en": "The growth phase can be extended as long as you like.",
+                    "de": "Die Wachstumsphase kann beliebig verlängert werden."
+                },
+                {
+                    "en": "Week 9: water only. Week 10: harvest.",
+                    "de": "Woche 9: nur Wasser. Woche 10: Ernte."
+                }
+            ],
+            "products": [
+                {
+                    "id": "root-juice",
+                    "name": {
+                        "en": "Root Juice"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1
+                },
+                {
+                    "id": "microbes",
+                    "name": {
+                        "en": "Microbes"
+                    },
+                    "unit": "g",
+                    "baseVolumeLiters": 1,
+                    "note": {
+                        "en": "Use once a week – twice with high nutrient demand in growth and bloom.",
+                        "de": "Einmal pro Woche anwenden – bei hohem Nährstoffbedarf in Wachstum und Blüte zweimal."
+                    }
+                },
+                {
+                    "id": "bio-grow",
+                    "name": {
+                        "en": "Bio-Grow"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "group": "base"
+                },
+                {
+                    "id": "fish-mix",
+                    "name": {
+                        "en": "Fish-Mix"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "group": "base",
+                    "note": {
+                        "en": "Can be used during growth – switch to Bio-Grow when you start the bloom phase.",
+                        "de": "Kann in der Wachstumsphase verwendet werden – zur Blüte auf Bio-Grow umsteigen."
+                    }
+                },
+                {
+                    "id": "bio-bloom",
+                    "name": {
+                        "en": "Bio-Bloom"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1
+                },
+                {
+                    "id": "top-max",
+                    "name": {
+                        "en": "Top-Max"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                },
+                {
+                    "id": "bio-heaven",
+                    "name": {
+                        "en": "Bio-Heaven"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                },
+                {
+                    "id": "acti-vera",
+                    "name": {
+                        "en": "Acti-Vera"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                },
+                {
+                    "id": "alg-a-mic",
+                    "name": {
+                        "en": "Alg-A-Mic"
+                    },
+                    "unit": "ml",
+                    "baseVolumeLiters": 1,
+                    "optional": true
+                }
+            ],
+            "weeks": [
+                {
+                    "phase": "start",
+                    "week": 1,
+                    "doses": {
+                        "root-juice": 4,
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-heaven": 2,
+                        "acti-vera": 2
+                    }
+                },
+                {
+                    "phase": "growth",
+                    "week": 1,
+                    "doses": {
+                        "root-juice": 4,
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-heaven": 2,
+                        "acti-vera": 2,
+                        "alg-a-mic": 2
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 1,
+                    "doses": {
+                        "root-juice": 2,
+                        "microbes": 0.2,
+                        "bio-grow": 3,
+                        "fish-mix": 3,
+                        "bio-bloom": 2,
+                        "top-max": 1,
+                        "bio-heaven": 2,
+                        "acti-vera": 3,
+                        "alg-a-mic": 2
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 2,
+                    "doses": {
+                        "root-juice": 2,
+                        "microbes": 0.2,
+                        "bio-grow": 4,
+                        "fish-mix": 4,
+                        "bio-bloom": 3,
+                        "top-max": 2,
+                        "bio-heaven": 3,
+                        "acti-vera": 4,
+                        "alg-a-mic": 2
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 3,
+                    "doses": {
+                        "microbes": 0.4,
+                        "bio-grow": 4,
+                        "fish-mix": 4,
+                        "bio-bloom": 3,
+                        "top-max": 2,
+                        "bio-heaven": 4,
+                        "acti-vera": 5,
+                        "alg-a-mic": 3
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 4,
+                    "doses": {
+                        "microbes": 0.4,
+                        "bio-grow": 4,
+                        "fish-mix": 4,
+                        "bio-bloom": 4,
+                        "top-max": 3,
+                        "bio-heaven": 5,
+                        "acti-vera": 5,
+                        "alg-a-mic": 3
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 5,
+                    "doses": {
+                        "microbes": 0.4,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 4,
+                        "top-max": 3,
+                        "bio-heaven": 5,
+                        "acti-vera": 3,
+                        "alg-a-mic": 4
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 6,
+                    "doses": {
+                        "microbes": 0.2,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 4,
+                        "top-max": 4,
+                        "bio-heaven": 3,
+                        "acti-vera": 3,
+                        "alg-a-mic": 4
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 7,
+                    "doses": {
+                        "microbes": 0.2,
+                        "bio-grow": 2,
+                        "fish-mix": 2,
+                        "bio-bloom": 3,
+                        "top-max": 4,
+                        "bio-heaven": 3,
+                        "acti-vera": 2,
+                        "alg-a-mic": 3
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 8,
+                    "doses": {
+                        "microbes": 0.2,
+                        "bio-grow": 1,
+                        "fish-mix": 1,
+                        "bio-bloom": 3,
+                        "top-max": 1,
+                        "bio-heaven": 2,
+                        "acti-vera": 1,
+                        "alg-a-mic": 2
+                    }
+                },
+                {
+                    "phase": "bloom",
+                    "week": 9,
+                    "doses": {}
+                }
+            ]
+        }
+    ]
+}

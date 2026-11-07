@@ -171,6 +171,12 @@ body {
     border-color: var(--accent);
 }
 
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-s);
+}
+
 .input-row {
     display: flex;
     gap: var(--space-s);
@@ -263,10 +269,36 @@ body {
     accent-color: var(--accent);
 }
 
+.option-group {
+    display: grid;
+    gap: var(--space-s);
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.option-group .label {
+    margin-bottom: 0;
+}
+
 .note {
     margin: 0 0 0 1.75rem;
     color: var(--muted);
     font-size: 0.875rem;
+}
+
+/* Notes for the whole schedule */
+.schedule-notes {
+  display: grid;
+  gap: var(--space-s);
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.schedule-notes:empty {
+  display: none;
 }
 
 /* Result */
