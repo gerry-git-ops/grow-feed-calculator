@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
 <head>
-    <meta charset="utf-8">
-    <meta name="google" content="notranslate">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Grow Feed Calculator</title>
+  <meta charset="utf-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grow Feed Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Grow Feed Calculator</h1>
+  <main class="app">
+    <header class="app-header">
+      <h1 class="app-title">Grow Feed Calculator</h1>
+    </header>
 
-    <fieldset id="phase">
-        <legend>Phase</legend>
-    </fieldset>
+    <section class="card">
+      <fieldset id="phase" class="choice-group">
+        <legend class="label">Phase</legend>
+      </fieldset>
 
-    <label for="week">Week</label>
-    <select id="week"></select>
+      <div class="field">
+        <label for="week" class="label">Week</label>
+        <select id="week" class="input"></select>
+      </div>
+    </section>
 
-    <label for="water">Water</label>
-    <input id="water" type="text" inputmode="decimal" placeholder="e.g. 0,7">
-    <select id="water-unit">
-        <option value="l">L</option>
-        <option value="ml">ml</option>
-    </select>
+    <section class="card">
+      <div class="field">
+        <label for="water" class="label">Water</label>
+        <div class="input-row">
+          <input id="water" class="input" type="text" inputmode="decimal" placeholder="e.g. 700">
+          <select id="water-unit" class="input input-unit">
+            <option value="ml">ml</option>
+            <option value="l">L</option>
+          </select>
+        </div>
+      </div>
 
-    <div id="optional"></div>
-    <p id="water-info"></p>
-    <ul id="result"></ul>
+      <div id="optional" class="options"></div>
+    </section>
 
-    <script type="module" src="src/app.js"></script>
+    <section class="card">
+      <p id="water-info" class="water-info"></p>
+      <ul id="result" class="dose-list"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
 </body>
 </html>

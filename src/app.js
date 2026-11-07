@@ -15,7 +15,11 @@ for (const phase of phases) {
   radio.type = "radio";
   radio.name = "phase";
   radio.value = phase;
-  label.append(radio, ` ${phase}`);
+  radio.className = "choice-input";
+  const box = document.createElement("span");
+  box.className = "choice-box";
+  box.textContent = phase;
+  label.append(radio, box);
   phaseBox.append(label);
 }
 
@@ -33,10 +37,11 @@ const optionalBox = document.querySelector("#optional");
 
 for (const product of schedule.products.filter((p) => p.optional)) {
   const label = document.createElement("label");
+  label.className = "option";
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.value = product.id;
-  label.append(checkbox, ` ${product.name.en}`);
+  label.append(checkbox, product.name.en);
   optionalBox.append(label);
 
   if (product.note) {
@@ -83,7 +88,13 @@ function showResult() {
     }
     const digits = dose.unit === "drops" ? 0 : 1;
     const item = document.createElement("li");
-    item.textContent = `${product.name.en}: ${dose.amount.toFixed(digits)} ${dose.unit}`;
+    item.className = "dose";
+    const name = document.createElement("span");
+    name.textContent = product.name.en;
+    const amount = document.createElement("span");
+    amount.className = "dose-amount";
+    amount.textContent = `${dose.amount.toFixed(digits)} ${dose.unit}`;
+    item.append(name, amount);
     resultList.append(item);
   }
 
