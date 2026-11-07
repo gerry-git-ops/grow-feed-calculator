@@ -163,3 +163,8 @@ document.addEventListener("input", showResult);
 document.addEventListener("change", showResult);
 
 updateTexts();
+
+// Offline support
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
