@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="utf-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grow Feed Calculator</title>
+</head>
+<body>
+    <h1>Grow Feed Calculator</h1>
+
+    <fieldset id="phase">
+        <legend>Phase</legend>
+    </fieldset>
+
+    <label for="week">Week</label>
+    <select id="week"></select>
+
+    <label for="water">Water</label>
+    <input id="water" type="text" inputmode="decimal" placeholder="e.g. 0,7">
+    <select id="water-unit">
+        <option value="l">L</option>
+        <option value="ml">ml</option>
+    </select>
+
+    <div id="optional"></div>
+    <p id="water-info"></p>
+    <ul id="result"></ul>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@ export function findWeek(schedule, phase, week) {
  * Calculate the amount of each product for a given amount of water.
  *
  * @param {object} schedule    One entry of "schedules" from a brand file
- * @param {string} phase       "clone", "growth" or "bloom"
+ * @param {string} phase       "start", "growth" or "bloom"
  * @param {number} week        Week number within the phase
  * @param {number} waterLiters Amount of water in liters
  * @param {string[]} enabledOptional IDs of optional products to include
