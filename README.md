@@ -9,13 +9,13 @@
 **A small, open calculator for fertilizer amounts – right on your phone.**<br>
 Pick a manufacturer, a schedule and a week, enter how much water you mix, and get the exact amount of every product.
 
-![Version](https://img.shields.io/badge/Version-0.6.0-a3e635)
+![Version](https://img.shields.io/badge/Version-0.8.0-a3e635)
 ![PWA](https://img.shields.io/badge/PWA-installable%20%C2%B7%20offline-059669)
 ![License](https://img.shields.io/badge/License-GPL--3.0-blue)
 
 ![Feeding charts](https://img.shields.io/badge/Feeding%20charts-Hesi-059669)![BioBizz](https://img.shields.io/badge/BioBizz-d97706)![Canna](https://img.shields.io/badge/Canna-2563eb)
 &nbsp;
-![Languages](https://img.shields.io/badge/Languages-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)
+![Languages](https://img.shields.io/badge/Languages-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)![FR](https://img.shields.io/badge/FR-db2777)
 
 ### 👉 [Open the app](https://gerry-git-ops.github.io/grow-feed-calculator/)
 
@@ -58,7 +58,7 @@ The app only **calculates**. It does not track or monitor your plants – that i
 - 🫗 **Premix products** are shown with the water instead of as a dose –
   tiny amounts like 0.16 drops cannot be measured, so you mix them into your watering water beforehand
 - 📝 Usage notes per product and per schedule, straight from the manufacturer's chart
-- 🌍 **English and German**, chosen automatically from your device, switchable at any time
+- 🌍 **English, German and French**, chosen automatically from your device, switchable at any time
 - 🌗 **Light and dark mode**, follows your device until you switch it yourself
 - 🔔 **Update notice** when a new version is available – or automatic updates, your choice
 - 📲 **Installable** on your home screen and works **offline**
@@ -88,7 +88,8 @@ The app only **calculates**. It does not track or monitor your plants – that i
 
 - **The app always runs from the copy stored on your device** – online and offline.
 - **Online:** every time you open the app, it only loads the small version list (`changelog.json`)
-  and checks whether there is a newer version. If the app stays open, it checks again every 48 hours.
+  and checks whether there is a newer version – also every time you bring it back from the background.
+  If it stays open on screen, it checks again every 48 hours.
 - **Auto-Update on** (default): a new version is loaded and the app restarts right away.
 - **Auto-Update off:** the version turns yellow and a notice shows what is new. You choose
   *Update now*, *Later* or *Don't show again for this version*. The app files are only loaded when you update.
@@ -97,10 +98,34 @@ The app only **calculates**. It does not track or monitor your plants – that i
   Your water amount is **not** saved, and nothing is sent to a server.
 
 The installed version is shown at the bottom right of the app – green when it is up to date,
-yellow when a newer version is available. Tap it to see what changed. The **Auto-Update** switch
-sits right next to it.
+yellow when a newer version is available. Tap it to see what changed – when a newer version is
+available, the history already shows what it brings. The button at the top of the history checks for
+updates, or starts the update right away. The **Auto-Update** switch sits right next to the version.
 
 ## 🏷️ Changelog
+
+<details>
+<summary><b>0.8.0</b> · 2026-11-07</summary>
+
+- French as app language – notes from the feeding charts are still shown in English
+
+</details>
+
+<details>
+<summary><b>0.7.0</b> · 2026-11-07</summary>
+
+- Checks for updates every time the app comes back from the background
+- Version history shows what the new version brings
+- Button to check for updates or to update right away
+
+</details>
+
+<details>
+<summary><b>0.6.1</b> · 2026-11-07</summary>
+
+- Small fix in the update process
+
+</details>
 
 <details>
 <summary><b>0.6.0</b> · 2026-11-07</summary>
@@ -266,7 +291,7 @@ grow-feed-calculator/
 │   ├── index.json       # list of all manufacturer files
 │   └── *.json           # one feeding chart file per manufacturer
 ├── fonts/geist/         # Geist font
-├── i18n/                # texts per language (en, de)
+├── i18n/                # texts per language (en, de, fr)
 ├── src/
 │   ├── app.js           # calculator page: inputs and result
 │   ├── calculator.js    # dose calculation

@@ -9,13 +9,13 @@
 **Ein kleiner, offener Rechner für Düngermengen – direkt auf dem Handy.**<br>
 Hersteller, Schema und Woche wählen, die Wassermenge eingeben und für jedes Produkt die genaue Menge bekommen.
 
-![Version](https://img.shields.io/badge/Version-0.6.0-a3e635)
+![Version](https://img.shields.io/badge/Version-0.8.0-a3e635)
 ![PWA](https://img.shields.io/badge/PWA-installierbar%20%C2%B7%20offline-059669)
 ![Lizenz](https://img.shields.io/badge/Lizenz-GPL--3.0-blue)
 
 ![Düngeschemas](https://img.shields.io/badge/D%C3%BCngeschemas-Hesi-059669)![BioBizz](https://img.shields.io/badge/BioBizz-d97706)![Canna](https://img.shields.io/badge/Canna-2563eb)
 &nbsp;
-![Sprachen](https://img.shields.io/badge/Sprachen-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)
+![Sprachen](https://img.shields.io/badge/Sprachen-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)![FR](https://img.shields.io/badge/FR-db2777)
 
 ### 👉 [App öffnen](https://gerry-git-ops.github.io/grow-feed-calculator/)
 
@@ -58,7 +58,7 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
 - 🫗 **Vormisch-Produkte** stehen beim Wasser statt als Dosis –
   winzige Mengen wie 0,16 Tropfen lassen sich nicht abmessen, deshalb mischst du sie vorher ins Gießwasser
 - 📝 Anwendungshinweise je Produkt und je Schema, direkt aus dem Düngeschema des Herstellers
-- 🌍 **Englisch und Deutsch**, automatisch passend zum Gerät, jederzeit umschaltbar
+- 🌍 **Englisch, Deutsch und Französisch**, automatisch passend zum Gerät, jederzeit umschaltbar
 - 🌗 **Hell- und Dunkelmodus**, folgt dem Gerät, bis du selbst umschaltest
 - 🔔 **Update-Hinweis**, wenn eine neue Version da ist – oder automatische Updates, du entscheidest
 - 📲 **Installierbar** auf dem Home-Bildschirm und läuft **offline**
@@ -88,7 +88,8 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
 
 - **Die App läuft immer aus der auf dem Gerät gespeicherten Kopie** – online wie offline.
 - **Online:** Bei jedem Öffnen lädt die App nur die kleine Versionsliste (`changelog.json`) und prüft,
-  ob es eine neuere Version gibt. Bleibt die App offen, prüft sie alle 48 Stunden erneut.
+  ob es eine neuere Version gibt – auch jedes Mal, wenn du sie aus dem Hintergrund zurückholst.
+  Bleibt sie auf dem Bildschirm offen, prüft sie alle 48 Stunden erneut.
 - **Auto-Update an** (Standard): Eine neue Version wird geladen und die App startet gleich neu.
 - **Auto-Update aus:** Die Version wird gelb, und ein Hinweis zeigt, was neu ist. Du wählst
   *Jetzt aktualisieren*, *Später* oder *Für diese Version nicht mehr anzeigen*. Die App-Dateien werden erst beim Aktualisieren geladen.
@@ -97,9 +98,34 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
   Deine Wassermenge wird **nicht** gespeichert, und nichts wird an einen Server geschickt.
 
 Unten rechts in der App steht die installierte Version – grün, wenn sie aktuell ist, gelb, wenn es
-eine neuere gibt. Antippen zeigt, was sich geändert hat. Direkt daneben sitzt der Schalter **Auto-Update**.
+eine neuere gibt. Antippen zeigt, was sich geändert hat – gibt es eine neuere Version, zeigt der Verlauf
+schon, was sie bringt. Der Knopf oben im Verlauf sucht nach Updates oder startet das Update direkt.
+Direkt neben der Version sitzt der Schalter **Auto-Update**.
 
 ## 🏷️ Änderungsverlauf
+
+<details>
+<summary><b>0.8.0</b> · 07.11.2026</summary>
+
+- Französisch als App-Sprache – Hinweise aus den Düngeschemas stehen vorerst noch auf Englisch
+
+</details>
+
+<details>
+<summary><b>0.7.0</b> · 07.11.2026</summary>
+
+- Prüft auf Updates, sobald die App aus dem Hintergrund zurückkommt
+- Der Versionsverlauf zeigt, was die neue Version bringt
+- Knopf zum Suchen nach Updates oder zum direkten Aktualisieren
+
+</details>
+
+<details>
+<summary><b>0.6.1</b> · 07.11.2026</summary>
+
+- Kleine Korrektur beim Aktualisieren
+
+</details>
 
 <details>
 <summary><b>0.6.0</b> · 07.11.2026</summary>
@@ -265,7 +291,7 @@ grow-feed-calculator/
 │   ├── index.json       # Liste aller Hersteller-Dateien
 │   └── *.json           # eine Düngeschema-Datei je Hersteller
 ├── fonts/geist/         # Schrift Geist
-├── i18n/                # Texte je Sprache (en, de)
+├── i18n/                # Texte je Sprache (en, de, fr)
 ├── src/
 │   ├── app.js           # Rechner-Seite: Eingaben und Ergebnis
 │   ├── calculator.js    # Berechnung der Mengen
