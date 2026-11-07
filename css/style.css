@@ -26,6 +26,7 @@
     --text: #111827;
     --muted: #6b7280;
     --accent: #059669;
+    --accent-glow: rgb(5 150 105 / 0.25);
     --on-accent: #ffffff;
     --card-bg: rgb(255 255 255 / 0.8);
     --card-border: rgb(229 231 235 / 0.6);
@@ -54,10 +55,11 @@
     --text: #f3f4f6;
     --muted: #9ca3af;
     --accent: #a3e635;
+    --accent-glow: rgb(163 230 53 / 0.2);
     --on-accent: #030712;
     --card-bg: rgb(17 24 39 / 0.6);
     --card-border: rgb(31 41 55 / 0.5);
-    --card-shadow: none;
+    --card-shadow: 0 0 0 transparent;
     --input-bg: #111827;
     --input-border: #1f2937;
 }
@@ -69,6 +71,10 @@
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 body {
@@ -92,20 +98,31 @@ body {
 }
 
 .app-header {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-s);
+}
+
+.app-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-m);
+    gap: var(--space-s);
+}
+
+.app-logo {
+    display: block;
+    width: 100%;
+    max-width: 22rem;
+    height: auto;
 }
 
 .app-title {
     margin: 0;
     font-size: 1.5rem;
-}
-
-.app-controls {
-    display: flex;
-    gap: var(--space-s);
+    text-align: center;
 }
 
 /* ==========================================================
@@ -118,9 +135,9 @@ body {
     gap: var(--space-m);
     padding: var(--space-l);
     background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--accent);
     border-radius: var(--radius-card);
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 0 12px var(--accent-glow), var(--card-shadow);
     backdrop-filter: blur(12px);
     transition: background-color var(--transition), border-color var(--transition);
 }

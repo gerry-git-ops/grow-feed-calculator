@@ -16,6 +16,7 @@ const waterInput = document.querySelector("#water");
 const unitSelect = document.querySelector("#water-unit");
 const resultList = document.querySelector("#result");
 const waterInfo = document.querySelector("#water-info");
+const resultCard = document.querySelector("#result-card");
 
 // Language switch
 const languageSelect = document.querySelector("#language");
@@ -124,6 +125,7 @@ function showResult() {
   resultList.replaceChildren();
   waterInfo.textContent = "";
   const liters = readLiters();
+  resultCard.hidden = liters === null;
   if (liters === null) return;
 
   const phase = phaseBox.querySelector("input:checked").value;
