@@ -9,7 +9,7 @@
 **Ein kleiner, offener Rechner für Düngermengen – direkt auf dem Handy.**<br>
 Hersteller, Schema und Woche wählen, die Wassermenge eingeben und für jedes Produkt die genaue Menge bekommen.
 
-![Version](https://img.shields.io/badge/Version-0.8.0-a3e635)
+![Version](https://img.shields.io/badge/Version-0.9.0-a3e635)
 ![PWA](https://img.shields.io/badge/PWA-installierbar%20%C2%B7%20offline-059669)
 ![Lizenz](https://img.shields.io/badge/Lizenz-GPL--3.0-blue)
 
@@ -103,6 +103,14 @@ schon, was sie bringt. Der Knopf oben im Verlauf sucht nach Updates oder startet
 Direkt neben der Version sitzt der Schalter **Auto-Update**.
 
 ## 🏷️ Änderungsverlauf
+
+<details>
+<summary><b>0.9.0</b> · 08.11.2026</summary>
+
+- Düngeschemas jetzt auch auf Französisch: Hinweise, Abschnitte und die französischen Produktnamen von Hesi
+- Übersetzungen der Düngeschemas liegen in eigenen Dateien
+
+</details>
 
 <details>
 <summary><b>0.8.0</b> · 07.11.2026</summary>
@@ -208,29 +216,56 @@ Beispiel: ein Produkt mit 50 ml pro 10 L. Für 700 ml Wasser sind das 50 × 0,7 
 <summary><b>Datenformat</b> – um eigene Düngeschemas hinzuzufügen</summary>
 
 Jeder Hersteller hat eine Datei in `data/<hersteller>.json`, aufgelistet in `data/index.json`.
-Ein gekürztes Beispiel:
+Die Datendateien enthalten **nur Englisch**. Übersetzungen liegen in eigenen Dateien je Sprache
+(siehe unten).
+
+**Jede Datei beginnt mit drei Feldern**
+
+| Feld | Bedeutung |
+|---|---|
+| `schema` | Art der Datei: `feed-chart`, `feed-chart-index`, `feed-chart-translation` oder `app-translation` |
+| `schemaVersion` | Version dieses Dateiformats – zählt für jedes `schema` getrennt |
+| `version` | Stand des Inhalts dieser einen Datei – um 1 erhöhen, sobald sich Werte oder Texte ändern |
+
+> **IDs ändern sich nach der Veröffentlichung nie.** Übersetzungen, gespeicherte Auswahl und später
+> die API verweisen darauf. Zum Umbenennen den `name` ändern, nicht die `id`.
+
+**Index – `data/index.json`**
 
 ```json
 {
-  "schemaVersion": 2,
+  "schema": "feed-chart-index",
+  "schemaVersion": 1,
+  "version": 1,
+  "charts": ["hesi.json", "biobizz.json", "canna.json"]
+}
+```
+
+**Düngeschema – `data/<hersteller>.json`** (gekürztes Beispiel)
+
+```json
+{
+  "schema": "feed-chart",
+  "schemaVersion": 3,
+  "version": 1,
   "brand": { "id": "example", "name": "Example" },
   "schedules": [
     {
       "id": "soil",
-      "name": { "en": "Soil", "de": "Erde" },
+      "name": "Soil",
       "medium": "soil",
-      "notes": [{ "en": "A note for the whole schedule", "de": "Ein Hinweis zum ganzen Schema" }],
+      "notes": [{ "id": "ec-ph", "text": "A note for the whole schedule" }],
       "products": [
-        { "id": "grow-a", "name": { "en": "Grow A" }, "unit": "ml", "baseVolumeLiters": 10 },
-        { "id": "grow-b", "name": { "en": "Grow B" }, "unit": "ml", "baseVolumeLiters": 1, "group": "base" },
-        { "id": "grow-c", "name": { "en": "Grow C" }, "unit": "ml", "baseVolumeLiters": 1, "group": "base" },
-        { "id": "booster", "name": { "en": "Booster" }, "unit": "ml", "baseVolumeLiters": 10, "optional": true,
-          "note": { "en": "Short usage hint", "de": "Kurzer Anwendungshinweis" } }
+        { "id": "grow-a", "name": "Grow A", "unit": "ml", "baseVolumeLiters": 10 },
+        { "id": "grow-b", "name": "Grow B", "unit": "ml", "baseVolumeLiters": 1, "group": "base" },
+        { "id": "grow-c", "name": "Grow C", "unit": "ml", "baseVolumeLiters": 1, "group": "base" },
+        { "id": "booster", "name": "Booster", "unit": "ml", "baseVolumeLiters": 10, "optional": true,
+          "note": "Short usage hint" }
       ],
       "weeks": [
         { "phase": "growth", "week": 1, "doses": { "grow-a": [30, 50], "grow-b": 2, "grow-c": 2 } },
-        { "phase": "bloom", "week": 1, "label": { "en": "Bloom I", "de": "Blüte I" },
-          "duration": { "en": "2–3 weeks", "de": "2–3 Wochen" }, "doses": { "booster": 20 } }
+        { "id": "bloom-1", "phase": "bloom", "week": 1, "label": "Bloom I", "duration": "2–3 weeks",
+          "doses": { "booster": 20 } }
       ]
     }
   ]
@@ -241,31 +276,64 @@ Ein gekürztes Beispiel:
 
 | Feld | Bedeutung |
 |---|---|
-| `id`, `name` | Technischer Name und angezeigter Name je Sprache |
+| `id`, `name` | Fester technischer Name und angezeigter Name (Englisch) |
 | `medium` | Substrat, z. B. `soil` (Erde) |
-| `notes` | Optionale Hinweise zum ganzen Schema, je Sprache |
+| `notes` | Optionale Hinweise zum ganzen Schema, jeweils mit `id` und `text` |
 
 **Produkte**
 
 | Feld | Bedeutung |
 |---|---|
-| `id` | Fester technischer Name, genutzt vom Code und später von der API |
-| `name` | Produktname je Sprache, `en` ist Pflicht |
+| `id` | Fester technischer Name, genutzt vom Code, den Übersetzungen und später der API |
+| `name` | Produktname (Englisch) |
 | `unit` | `ml`, `drops` (Tropfen) oder `g` |
 | `baseVolumeLiters` | Wassermenge, auf die sich die Dosis bezieht |
 | `optional` | `true`, wenn man das Produkt pro Gießen selbst einschaltet |
 | `group` | Produkte mit derselben Gruppe ersetzen sich gegenseitig – man wählt eins davon |
 | `premix` | `true`, wenn das Produkt vorher ins Wasser gemischt wird (steht beim Wasser, nicht als Dosis) |
-| `note` | Optionaler kurzer Anwendungshinweis je Sprache |
+| `note` | Optionaler kurzer Anwendungshinweis (Englisch) |
 
 **Wochen und Abschnitte**
 
 | Feld | Bedeutung |
 |---|---|
-| `phase` | `start` (Sämling oder Steckling), `growth` oder `bloom` – die angezeigten Wörter kommen aus den Sprachdateien der App |
+| `phase` | `start` (Sämling oder Steckling), `growth` (Wachstum) oder `bloom` (Blüte) – die angezeigten Wörter kommen aus den Sprachdateien der App |
 | `week` | Nummer innerhalb der Phase |
-| `label`, `duration` | Optionaler Name und Dauer je Sprache, für Schemas mit Abschnitten statt Wochen |
-| `doses` | Produkt-ID → Dosis, als Zahl oder Spanne `[min, max]`. Fehlt ein Produkt, wird es in dieser Woche nicht gegeben, eine leere Liste heißt reines Wasser |
+| `id`, `label`, `duration` | Nur bei Schemas mit Abschnitten statt Wochen: feste ID, Name und Dauer (Englisch) |
+| `doses` | Produkt-ID → Dosis, als Zahl oder Spanne `[min, max]`. Fehlt ein Produkt, gibt es das in dieser Woche nicht; eine leere Liste heißt nur Wasser |
+
+**Übersetzungen – `data/i18n/<sprache>.json`**
+
+Eine Datei je Sprache für alle Hersteller. Jeder Text wird über eine feste Kennung aus den IDs
+gefunden. Nötig sind nur Texte, die sich vom Englischen unterscheiden – was fehlt, erscheint auf
+Englisch.
+
+```json
+{
+  "schema": "feed-chart-translation",
+  "schemaVersion": 1,
+  "version": 1,
+  "texts": {
+    "example": {
+      "schedules": {
+        "soil": {
+          "name": "Erde",
+          "weeks": { "bloom-1": { "label": "Blüte I", "duration": "2–3 Wochen" } }
+        }
+      },
+      "notes": { "ec-ph": "Ein Hinweis zum ganzen Schema" },
+      "products": { "booster": { "note": "Kurzer Anwendungshinweis" } }
+    }
+  }
+}
+```
+
+| Kennung | Text |
+|---|---|
+| `<hersteller>.schedules.<schema>.name` | Name eines Schemas |
+| `<hersteller>.schedules.<schema>.weeks.<woche>.label` / `.duration` | Name und Dauer eines Abschnitts |
+| `<hersteller>.notes.<hinweis>` | Hinweis zum Schema – gilt für alle Schemas des Herstellers |
+| `<hersteller>.products.<produkt>.name` / `.note` | Produktname und Hinweis – gilt für alle Schemas des Herstellers |
 
 </details>
 
@@ -288,6 +356,7 @@ grow-feed-calculator/
 ├── assets/              # Logo und App-Icons
 ├── css/style.css        # Design
 ├── data/
+│   ├── i18n/            # Übersetzungen der Düngeschemas (de, fr)
 │   ├── index.json       # Liste aller Hersteller-Dateien
 │   └── *.json           # eine Düngeschema-Datei je Hersteller
 ├── fonts/geist/         # Schrift Geist
