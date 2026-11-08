@@ -3,16 +3,16 @@
  * Returns undefined if it does not exist.
  */
 export function findWeek(schedule, phase, week) {
-  return schedule.weeks.find((w) => w.phase === phase && w.week === week);
+    return schedule.weeks.find((w) => w.phase === phase && w.week === week);
 }
 
 /**
  * Products that have a dose in the given week.
  */
 export function productsInWeek(schedule, phase, week) {
-  const entry = findWeek(schedule, phase, week);
-  if (!entry) return [];
-  return schedule.products.filter((p) => entry.doses[p.id] !== undefined);
+    const entry = findWeek(schedule, phase, week);
+    if (!entry) return [];
+    return schedule.products.filter((p) => entry.doses[p.id] !== undefined);
 }
 
 /**
@@ -29,23 +29,23 @@ export function productsInWeek(schedule, phase, week) {
  * @returns {{productId: string, amount: number|number[], unit: string}[]}
  */
 export function calculateDoses(schedule, phase, week, waterLiters, selected = []) {
-  const entry = findWeek(schedule, phase, week);
-  if (!entry) {
-    throw new Error(`Unknown week: ${phase} ${week}`);
-  }
+    const entry = findWeek(schedule, phase, week);
+    if (!entry) {
+        throw new Error(`Unknown week: ${phase} ${week}`);
+    }
 
-  const result = [];
-  for (const product of schedule.products) {
-    const dose = entry.doses[product.id];
-    if (dose === undefined) continue;
-    if ((product.optional || product.group) && !selected.includes(product.id)) continue;
+    const result = [];
+    for (const product of schedule.products) {
+        const dose = entry.doses[product.id];
+        if (dose === undefined) continue;
+        if ((product.optional || product.group) && !selected.includes(product.id)) continue;
 
-    const scale = (value) => (value * waterLiters) / product.baseVolumeLiters;
-    result.push({
-      productId: product.id,
-      amount: Array.isArray(dose) ? dose.map(scale) : scale(dose),
-      unit: product.unit,
-    });
-  }
-  return result;
+        const scale = (value) => (value * waterLiters) / product.baseVolumeLiters;
+        result.push({
+            productId: product.id,
+            amount: Array.isArray(dose) ? dose.map(scale) : scale(dose),
+            unit: product.unit,
+        });
+    }
+    return result;
 }

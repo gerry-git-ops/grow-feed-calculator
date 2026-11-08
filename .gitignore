@@ -1,0 +1,17 @@
+# Private files – never in the public repository
+private/
+.env
+.env.*
+secrets.*
+
+# Editor settings
+.vscode/*
+!.vscode/extensions.json
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencies, if a tool installs any
+node_modules/

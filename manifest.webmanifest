@@ -1,16 +1,29 @@
 {
-  "name": "Grow Feed Calculator",
-  "short_name": "Feed Calc",
-  "description": "Calculates fertilizer amounts for any amount of water.",
-  "lang": "en",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#030712",
-  "theme_color": "#030712",
-  "icons": [
-    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
+    "name": "Grow Feed Calculator",
+    "short_name": "Feed Calc",
+    "description": "Calculates fertilizer amounts for any amount of water.",
+    "lang": "en",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#030712",
+    "theme_color": "#030712",
+    "icons": [
+        {
+            "src": "assets/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
 }

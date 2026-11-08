@@ -1,0 +1,8 @@
+# Text files: always LF line endings in the repository
+* text=auto eol=lf
+
+# Binary files: never change them
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary
