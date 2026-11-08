@@ -1,5 +1,7 @@
 {
-    "schemaVersion": 2,
+    "schema": "feed-chart",
+    "schemaVersion": 3,
+    "version": 1,
     "brand": {
         "id": "canna",
         "name": "Canna"
@@ -7,78 +9,57 @@
     "schedules": [
         {
             "id": "terra",
-            "name": {
-                "en": "Terra",
-                "de": "Terra"
-            },
+            "name": "Terra",
             "medium": "soil",
             "notes": [
                 {
-                    "en": "The doses are guidelines from the manufacturer. The right amount also depends on plant, temperature, humidity and substrate.",
-                    "de": "Die Mengen sind Richtwerte des Herstellers. Die passende Menge hängt auch von Pflanze, Temperatur, Luftfeuchtigkeit und Substrat ab."
+                    "id": "guidelines",
+                    "text": "The doses are guidelines from the manufacturer. The right amount also depends on plant, temperature, humidity and substrate."
                 },
                 {
-                    "en": "The manufacturer recommends watching EC and pH. This app does not take them into account.",
-                    "de": "Der Hersteller empfiehlt, auf EC- und pH-Wert zu achten. Diese App berücksichtigt das nicht."
+                    "id": "ec-ph",
+                    "text": "The manufacturer recommends watching EC and pH. This app does not take them into account."
                 }
             ],
             "products": [
                 {
                     "id": "terra-vega",
-                    "name": {
-                        "en": "Terra Vega"
-                    },
+                    "name": "Terra Vega",
                     "unit": "ml",
                     "baseVolumeLiters": 10
                 },
                 {
                     "id": "terra-flores",
-                    "name": {
-                        "en": "Terra Flores"
-                    },
+                    "name": "Terra Flores",
                     "unit": "ml",
                     "baseVolumeLiters": 10
                 },
                 {
                     "id": "rhizotonic",
-                    "name": {
-                        "en": "Rhizotonic"
-                    },
+                    "name": "Rhizotonic",
                     "unit": "ml",
                     "baseVolumeLiters": 10,
                     "optional": true
                 },
                 {
                     "id": "cannazym",
-                    "name": {
-                        "en": "Cannazym"
-                    },
+                    "name": "Cannazym",
                     "unit": "ml",
                     "baseVolumeLiters": 10,
                     "optional": true,
-                    "note": {
-                        "en": "Double the dose to 50 ml per 10 L if the substrate is reused.",
-                        "de": "Dosis auf 50 ml pro 10 L verdoppeln, wenn das Substrat wiederverwendet wird."
-                    }
+                    "note": "Double the dose to 50 ml per 10 L if the substrate is reused."
                 },
                 {
                     "id": "cannaboost",
-                    "name": {
-                        "en": "Cannaboost"
-                    },
+                    "name": "Cannaboost",
                     "unit": "ml",
                     "baseVolumeLiters": 10,
                     "optional": true,
-                    "note": {
-                        "en": "Standard 20 ml per 10 L – increase to a maximum of 40 ml per 10 L for extra flowering power.",
-                        "de": "Standard 20 ml pro 10 L – für mehr Blühkraft auf maximal 40 ml pro 10 L erhöhen."
-                    }
+                    "note": "Standard 20 ml per 10 L – increase to a maximum of 40 ml per 10 L for extra flowering power."
                 },
                 {
                     "id": "pk-13-14",
-                    "name": {
-                        "en": "PK 13/14"
-                    },
+                    "name": "PK 13/14",
                     "unit": "ml",
                     "baseVolumeLiters": 10,
                     "optional": true
@@ -86,16 +67,11 @@
             ],
             "weeks": [
                 {
+                    "id": "start",
                     "phase": "start",
                     "week": 1,
-                    "label": {
-                        "en": "Start / rooting",
-                        "de": "Start / Bewurzelung"
-                    },
-                    "duration": {
-                        "en": "3–5 days",
-                        "de": "3–5 Tage"
-                    },
+                    "label": "Start / rooting",
+                    "duration": "3–5 days",
                     "doses": {
                         "terra-vega": [
                             15,
@@ -105,16 +81,11 @@
                     }
                 },
                 {
+                    "id": "veg-1",
                     "phase": "growth",
                     "week": 1,
-                    "label": {
-                        "en": "Vegetative I",
-                        "de": "Wachstum I"
-                    },
-                    "duration": {
-                        "en": "0–3 weeks",
-                        "de": "0–3 Wochen"
-                    },
+                    "label": "Vegetative I",
+                    "duration": "0–3 weeks",
                     "doses": {
                         "terra-vega": [
                             30,
@@ -125,16 +96,11 @@
                     }
                 },
                 {
+                    "id": "veg-2",
                     "phase": "growth",
                     "week": 2,
-                    "label": {
-                        "en": "Vegetative II",
-                        "de": "Wachstum II"
-                    },
-                    "duration": {
-                        "en": "2–4 weeks",
-                        "de": "2–4 Wochen"
-                    },
+                    "label": "Vegetative II",
+                    "duration": "2–4 weeks",
                     "doses": {
                         "terra-vega": [
                             35,
@@ -146,16 +112,11 @@
                     }
                 },
                 {
+                    "id": "gen-1",
                     "phase": "bloom",
                     "week": 1,
-                    "label": {
-                        "en": "Generative I",
-                        "de": "Blüte I"
-                    },
-                    "duration": {
-                        "en": "2–3 weeks",
-                        "de": "2–3 Wochen"
-                    },
+                    "label": "Generative I",
+                    "duration": "2–3 weeks",
                     "doses": {
                         "terra-flores": [
                             50,
@@ -170,16 +131,11 @@
                     }
                 },
                 {
+                    "id": "gen-2",
                     "phase": "bloom",
                     "week": 2,
-                    "label": {
-                        "en": "Generative II",
-                        "de": "Blüte II"
-                    },
-                    "duration": {
-                        "en": "1 week",
-                        "de": "1 Woche"
-                    },
+                    "label": "Generative II",
+                    "duration": "1 week",
                     "doses": {
                         "terra-flores": [
                             50,
@@ -195,16 +151,11 @@
                     }
                 },
                 {
+                    "id": "gen-3",
                     "phase": "bloom",
                     "week": 3,
-                    "label": {
-                        "en": "Generative III",
-                        "de": "Blüte III"
-                    },
-                    "duration": {
-                        "en": "2–3 weeks",
-                        "de": "2–3 Wochen"
-                    },
+                    "label": "Generative III",
+                    "duration": "2–3 weeks",
                     "doses": {
                         "terra-flores": [
                             40,
@@ -219,16 +170,11 @@
                     }
                 },
                 {
+                    "id": "gen-4",
                     "phase": "bloom",
                     "week": 4,
-                    "label": {
-                        "en": "Generative IV – ripening",
-                        "de": "Blüte IV – Reife"
-                    },
-                    "duration": {
-                        "en": "1–2 weeks",
-                        "de": "1–2 Wochen"
-                    },
+                    "label": "Generative IV – ripening",
+                    "duration": "1–2 weeks",
                     "doses": {
                         "cannazym": [
                             25,

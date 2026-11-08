@@ -1,56 +1,61 @@
 {
-    "app": {
-        "title": "Calculateur d'engrais"
-    },
-    "label": {
-        "phase": "Phase",
-        "stage": "Étape",
-        "week": "Semaine",
-        "water": "Eau",
-        "choice": "Choisir un",
-        "brand": "Fabricant",
-        "schedule": "Programme",
-        "language": "Langue"
-    },
-    "phase": {
-        "start": "Semis / Bouture",
-        "growth": "Croissance",
-        "bloom": "Floraison"
-    },
-    "unit": {
-        "ml": "ml",
-        "l": "L",
-        "g": "g",
-        "drops": {
-            "one": "goutte",
-            "other": "gouttes"
+    "schema": "app-translation",
+    "schemaVersion": 1,
+    "version": 1,
+    "texts": {
+        "app": {
+            "title": "Calculateur d'engrais"
+        },
+        "label": {
+            "phase": "Phase",
+            "stage": "Étape",
+            "week": "Semaine",
+            "water": "Eau",
+            "choice": "Choisir un",
+            "brand": "Fabricant",
+            "schedule": "Programme",
+            "language": "Langue"
+        },
+        "phase": {
+            "start": "Semis / Bouture",
+            "growth": "Croissance",
+            "bloom": "Floraison"
+        },
+        "unit": {
+            "ml": "ml",
+            "l": "L",
+            "g": "g",
+            "drops": {
+                "one": "goutte",
+                "other": "gouttes"
+            }
+        },
+        "water": {
+            "placeholder": "p. ex. 700",
+            "clear": "{amount} d'eau claire",
+            "premixed": "{amount} d'eau prémélangée avec {products}"
+        },
+        "theme": {
+            "toggle": "Basculer clair / sombre"
+        },
+        "footer": {
+            "version": "Version {version}",
+            "changes": "Modifications"
+        },
+        "update": {
+            "available": "La version {version} est disponible",
+            "now": "Mettre à jour",
+            "later": "Plus tard",
+            "hide": "Ne plus afficher pour cette version",
+            "auto": "Mise à jour automatique",
+            "autoShort": "Auto-Update",
+            "check": "Rechercher des mises à jour",
+            "checking": "Vérification …",
+            "current": "À jour",
+            "offline": "Pas de connexion",
+            "updating": "Mise à jour …",
+            "to": "Mettre à jour vers {version}",
+            "new": "nouveau"
         }
-    },
-    "water": {
-        "placeholder": "p. ex. 700",
-        "clear": "{amount} d'eau claire",
-        "premixed": "{amount} d'eau prémélangée avec {products}"
-    },
-    "theme": {
-        "toggle": "Basculer clair / sombre"
-    },
-    "footer": {
-        "version": "Version {version}",
-        "changes": "Modifications"
-    },
-    "update": {
-        "available": "La version {version} est disponible",
-        "now": "Mettre à jour",
-        "later": "Plus tard",
-        "hide": "Ne plus afficher pour cette version",
-        "auto": "Mise à jour automatique",
-        "autoShort": "Auto-Update",
-        "check": "Rechercher des mises à jour",
-        "checking": "Vérification …",
-        "current": "À jour",
-        "offline": "Pas de connexion",
-        "updating": "Mise à jour …",
-        "to": "Mettre à jour vers {version}",
-        "new": "nouveau"
     }
 }

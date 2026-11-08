@@ -1,5 +1,23 @@
 [
     {
+        "version": "0.9.0",
+        "date": "2026-11-08",
+        "changes": {
+            "en": [
+                "Feeding charts in French too: notes, stages and the French product names of Hesi",
+                "Translations of the feeding charts are kept in their own files"
+            ],
+            "de": [
+                "Düngeschemas jetzt auch auf Französisch: Hinweise, Abschnitte und die französischen Produktnamen von Hesi",
+                "Übersetzungen der Düngeschemas liegen in eigenen Dateien"
+            ],
+            "fr": [
+                "Programmes d'engrais désormais aussi en français : remarques, étapes et noms français des produits Hesi",
+                "Les traductions des programmes d'engrais se trouvent dans des fichiers séparés"
+            ]
+        }
+    },
+    {
         "version": "0.8.0",
         "date": "2026-11-07",
         "changes": {

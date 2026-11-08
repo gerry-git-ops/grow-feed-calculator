@@ -1,56 +1,61 @@
 {
-    "app": {
-        "title": "Dünger-Rechner"
-    },
-    "label": {
-        "phase": "Phase",
-        "stage": "Abschnitt",
-        "week": "Woche",
-        "water": "Wasser",
-        "choice": "Eins wählen",
-        "brand": "Hersteller",
-        "schedule": "Schema",
-        "language": "Sprache"
-    },
-    "phase": {
-        "start": "Sämling / Steckling",
-        "growth": "Wuchs",
-        "bloom": "Blüte"
-    },
-    "unit": {
-        "ml": "ml",
-        "l": "L",
-        "g": "g",
-        "drops": {
-            "one": "Tropfen",
-            "other": "Tropfen"
+    "schema": "app-translation",
+    "schemaVersion": 1,
+    "version": 1,
+    "texts": {
+        "app": {
+            "title": "Dünger-Rechner"
+        },
+        "label": {
+            "phase": "Phase",
+            "stage": "Abschnitt",
+            "week": "Woche",
+            "water": "Wasser",
+            "choice": "Eins wählen",
+            "brand": "Hersteller",
+            "schedule": "Schema",
+            "language": "Sprache"
+        },
+        "phase": {
+            "start": "Sämling / Steckling",
+            "growth": "Wuchs",
+            "bloom": "Blüte"
+        },
+        "unit": {
+            "ml": "ml",
+            "l": "L",
+            "g": "g",
+            "drops": {
+                "one": "Tropfen",
+                "other": "Tropfen"
+            }
+        },
+        "water": {
+            "placeholder": "z. B. 700",
+            "clear": "{amount} klares Wasser",
+            "premixed": "{amount} vorgemischtes Wasser mit {products}"
+        },
+        "theme": {
+            "toggle": "Hell / Dunkel umschalten"
+        },
+        "footer": {
+            "version": "Version {version}",
+            "changes": "Änderungen"
+        },
+        "update": {
+            "available": "Version {version} ist verfügbar",
+            "now": "Jetzt aktualisieren",
+            "later": "Später",
+            "hide": "Für diese Version nicht mehr anzeigen",
+            "auto": "Automatisch aktualisieren",
+            "autoShort": "Auto-Update",
+            "check": "Nach Updates suchen",
+            "checking": "Wird geprüft …",
+            "current": "Ist aktuell",
+            "offline": "Keine Verbindung",
+            "updating": "Wird aktualisiert …",
+            "to": "Auf {version} aktualisieren",
+            "new": "neu"
         }
-    },
-    "water": {
-        "placeholder": "z. B. 700",
-        "clear": "{amount} klares Wasser",
-        "premixed": "{amount} vorgemischtes Wasser mit {products}"
-    },
-    "theme": {
-        "toggle": "Hell / Dunkel umschalten"
-    },
-    "footer": {
-        "version": "Version {version}",
-        "changes": "Änderungen"
-    },
-    "update": {
-        "available": "Version {version} ist verfügbar",
-        "now": "Jetzt aktualisieren",
-        "later": "Später",
-        "hide": "Für diese Version nicht mehr anzeigen",
-        "auto": "Automatisch aktualisieren",
-        "autoShort": "Auto-Update",
-        "check": "Nach Updates suchen",
-        "checking": "Wird geprüft …",
-        "current": "Ist aktuell",
-        "offline": "Keine Verbindung",
-        "updating": "Wird aktualisiert …",
-        "to": "Auf {version} aktualisieren",
-        "new": "neu"
     }
 }

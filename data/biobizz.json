@@ -1,5 +1,7 @@
 {
-    "schemaVersion": 2,
+    "schema": "feed-chart",
+    "schemaVersion": 3,
+    "version": 1,
     "brand": {
         "id": "biobizz",
         "name": "BioBizz"
@@ -7,95 +9,70 @@
     "schedules": [
         {
             "id": "all-mix",
-            "name": {
-                "en": "All-Mix",
-                "de": "All-Mix"
-            },
+            "name": "All-Mix",
             "medium": "soil",
             "notes": [
                 {
-                    "en": "The growth phase can be extended as long as you like.",
-                    "de": "Die Wachstumsphase kann beliebig verlängert werden."
+                    "id": "extend-growth",
+                    "text": "The growth phase can be extended as long as you like."
                 },
                 {
-                    "en": "Week 9: water only. Week 10: harvest.",
-                    "de": "Woche 9: nur Wasser. Woche 10: Ernte."
+                    "id": "final-weeks",
+                    "text": "Week 9: water only. Week 10: harvest."
                 }
             ],
             "products": [
                 {
                     "id": "root-juice",
-                    "name": {
-                        "en": "Root Juice"
-                    },
+                    "name": "Root Juice",
                     "unit": "ml",
                     "baseVolumeLiters": 1
                 },
                 {
                     "id": "microbes",
-                    "name": {
-                        "en": "Microbes"
-                    },
+                    "name": "Microbes",
                     "unit": "g",
                     "baseVolumeLiters": 1,
-                    "note": {
-                        "en": "Use once a week – twice with high nutrient demand in growth and bloom.",
-                        "de": "Einmal pro Woche anwenden – bei hohem Nährstoffbedarf in Wachstum und Blüte zweimal."
-                    }
+                    "note": "Use once a week – twice with high nutrient demand in growth and bloom."
                 },
                 {
                     "id": "bio-grow",
-                    "name": {
-                        "en": "Bio-Grow"
-                    },
+                    "name": "Bio-Grow",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "group": "base"
                 },
                 {
                     "id": "fish-mix",
-                    "name": {
-                        "en": "Fish-Mix"
-                    },
+                    "name": "Fish-Mix",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "group": "base",
-                    "note": {
-                        "en": "Can be used during growth – switch to Bio-Grow when you start the bloom phase.",
-                        "de": "Kann in der Wachstumsphase verwendet werden – zur Blüte auf Bio-Grow umsteigen."
-                    }
+                    "note": "Can be used during growth – switch to Bio-Grow when you start the bloom phase."
                 },
                 {
                     "id": "bio-bloom",
-                    "name": {
-                        "en": "Bio-Bloom"
-                    },
+                    "name": "Bio-Bloom",
                     "unit": "ml",
                     "baseVolumeLiters": 1
                 },
                 {
                     "id": "top-max",
-                    "name": {
-                        "en": "Top-Max"
-                    },
+                    "name": "Top-Max",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true
                 },
                 {
                     "id": "bio-heaven",
-                    "name": {
-                        "en": "Bio-Heaven"
-                    },
+                    "name": "Bio-Heaven",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true
                 },
                 {
                     "id": "acti-vera",
-                    "name": {
-                        "en": "Acti-Vera"
-                    },
+                    "name": "Acti-Vera",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true
@@ -241,104 +218,77 @@
         },
         {
             "id": "light-mix",
-            "name": {
-                "en": "Light-Mix / Coco-Mix",
-                "de": "Light-Mix / Coco-Mix"
-            },
+            "name": "Light-Mix / Coco-Mix",
             "medium": "soil-or-coco",
             "notes": [
                 {
-                    "en": "The growth phase can be extended as long as you like.",
-                    "de": "Die Wachstumsphase kann beliebig verlängert werden."
+                    "id": "extend-growth",
+                    "text": "The growth phase can be extended as long as you like."
                 },
                 {
-                    "en": "Week 9: water only. Week 10: harvest.",
-                    "de": "Woche 9: nur Wasser. Woche 10: Ernte."
+                    "id": "final-weeks",
+                    "text": "Week 9: water only. Week 10: harvest."
                 }
             ],
             "products": [
                 {
                     "id": "root-juice",
-                    "name": {
-                        "en": "Root Juice"
-                    },
+                    "name": "Root Juice",
                     "unit": "ml",
                     "baseVolumeLiters": 1
                 },
                 {
                     "id": "microbes",
-                    "name": {
-                        "en": "Microbes"
-                    },
+                    "name": "Microbes",
                     "unit": "g",
                     "baseVolumeLiters": 1,
-                    "note": {
-                        "en": "Use once a week – twice with high nutrient demand in growth and bloom.",
-                        "de": "Einmal pro Woche anwenden – bei hohem Nährstoffbedarf in Wachstum und Blüte zweimal."
-                    }
+                    "note": "Use once a week – twice with high nutrient demand in growth and bloom."
                 },
                 {
                     "id": "bio-grow",
-                    "name": {
-                        "en": "Bio-Grow"
-                    },
+                    "name": "Bio-Grow",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "group": "base"
                 },
                 {
                     "id": "fish-mix",
-                    "name": {
-                        "en": "Fish-Mix"
-                    },
+                    "name": "Fish-Mix",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "group": "base",
-                    "note": {
-                        "en": "Can be used during growth – switch to Bio-Grow when you start the bloom phase.",
-                        "de": "Kann in der Wachstumsphase verwendet werden – zur Blüte auf Bio-Grow umsteigen."
-                    }
+                    "note": "Can be used during growth – switch to Bio-Grow when you start the bloom phase."
                 },
                 {
                     "id": "bio-bloom",
-                    "name": {
-                        "en": "Bio-Bloom"
-                    },
+                    "name": "Bio-Bloom",
                     "unit": "ml",
                     "baseVolumeLiters": 1
                 },
                 {
                     "id": "top-max",
-                    "name": {
-                        "en": "Top-Max"
-                    },
+                    "name": "Top-Max",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true
                 },
                 {
                     "id": "bio-heaven",
-                    "name": {
-                        "en": "Bio-Heaven"
-                    },
+                    "name": "Bio-Heaven",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true
                 },
                 {
                     "id": "acti-vera",
-                    "name": {
-                        "en": "Acti-Vera"
-                    },
+                    "name": "Acti-Vera",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true
                 },
                 {
                     "id": "alg-a-mic",
-                    "name": {
-                        "en": "Alg-A-Mic"
-                    },
+                    "name": "Alg-A-Mic",
                     "unit": "ml",
                     "baseVolumeLiters": 1,
                     "optional": true

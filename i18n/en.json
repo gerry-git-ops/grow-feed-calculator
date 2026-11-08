@@ -1,56 +1,61 @@
 {
-    "app": {
-        "title": "Grow Feed Calculator"
-    },
-    "label": {
-        "phase": "Phase",
-        "stage": "Stage",
-        "week": "Week",
-        "water": "Water",
-        "choice": "Choose one",
-        "brand": "Brand",
-        "schedule": "Schedule",
-        "language": "Language"
-    },
-    "phase": {
-        "start": "Seedling / Clone",
-        "growth": "Growth",
-        "bloom": "Bloom"
-    },
-    "unit": {
-        "ml": "ml",
-        "l": "L",
-        "g": "g",
-        "drops": {
-            "one": "drop",
-            "other": "drops"
+    "schema": "app-translation",
+    "schemaVersion": 1,
+    "version": 1,
+    "texts": {
+        "app": {
+            "title": "Grow Feed Calculator"
+        },
+        "label": {
+            "phase": "Phase",
+            "stage": "Stage",
+            "week": "Week",
+            "water": "Water",
+            "choice": "Choose one",
+            "brand": "Brand",
+            "schedule": "Schedule",
+            "language": "Language"
+        },
+        "phase": {
+            "start": "Seedling / Clone",
+            "growth": "Growth",
+            "bloom": "Bloom"
+        },
+        "unit": {
+            "ml": "ml",
+            "l": "L",
+            "g": "g",
+            "drops": {
+                "one": "drop",
+                "other": "drops"
+            }
+        },
+        "water": {
+            "placeholder": "e.g. 700",
+            "clear": "{amount} clear water",
+            "premixed": "{amount} premixed water with {products}"
+        },
+        "theme": {
+            "toggle": "Switch light / dark"
+        },
+        "footer": {
+            "version": "Version {version}",
+            "changes": "Changes"
+        },
+        "update": {
+            "available": "Version {version} is available",
+            "now": "Update now",
+            "later": "Later",
+            "hide": "Don't show again for this version",
+            "auto": "Update automatically",
+            "autoShort": "Auto-Update",
+            "check": "Check for updates",
+            "checking": "Checking …",
+            "current": "Up to date",
+            "offline": "No connection",
+            "updating": "Updating …",
+            "to": "Update to {version}",
+            "new": "new"
         }
-    },
-    "water": {
-        "placeholder": "e.g. 700",
-        "clear": "{amount} clear water",
-        "premixed": "{amount} premixed water with {products}"
-    },
-    "theme": {
-        "toggle": "Switch light / dark"
-    },
-    "footer": {
-        "version": "Version {version}",
-        "changes": "Changes"
-    },
-    "update": {
-        "available": "Version {version} is available",
-        "now": "Update now",
-        "later": "Later",
-        "hide": "Don't show again for this version",
-        "auto": "Update automatically",
-        "autoShort": "Auto-Update",
-        "check": "Check for updates",
-        "checking": "Checking …",
-        "current": "Up to date",
-        "offline": "No connection",
-        "updating": "Updating …",
-        "to": "Update to {version}",
-        "new": "new"
     }
 }

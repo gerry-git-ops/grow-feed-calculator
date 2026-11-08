@@ -1,5 +1,5 @@
 import { calculateDoses, productsInWeek } from "./calculator.js";
-import { languages, detectLanguage, loadLanguage, saveLanguage, language, t, plural, formatNumber, pick } from "./i18n.js";
+import { languages, detectLanguage, loadLanguage, saveLanguage, language, t, plural, formatNumber, dataText } from "./i18n.js";
 import { initTheme } from "./theme.js";
 import { loadChangelog, showChangelog } from "./changelog.js";
 import { checkForUpdate, showUpdate } from "./update.js";
@@ -8,9 +8,9 @@ initTheme();
 await loadLanguage(detectLanguage());
 await loadChangelog();
 
-// All brands from data/index.json; one file per brand
-const brandFiles = await (await fetch("data/index.json")).json();
-const brands = await Promise.all(brandFiles.map(async (file) => (await fetch(`data/${file}`)).json()));
+// All brands from the list in data/index.json; one file per brand
+const index = await (await fetch("data/index.json")).json();
+const brands = await Promise.all(index.charts.map(async (file) => (await fetch(`data/${file}`)).json()));
 // Last selection (brand, schedule, phase, week, water unit), restored on start
 const saved = JSON.parse(localStorage.getItem("selection") ?? "{}");
 let brand = brands.find((item) => item.brand.id === saved.brand) ?? brands[0];
@@ -33,275 +33,285 @@ const scheduleNotes = document.querySelector("#schedule-notes");
 const languageSelect = document.querySelector("#language");
 
 for (const lang of languages) {
-  const option = document.createElement("option");
-  option.value = lang;
-  option.textContent = lang.toUpperCase();
-  languageSelect.append(option);
+    const option = document.createElement("option");
+    option.value = lang;
+    option.textContent = lang.toUpperCase();
+    languageSelect.append(option);
 }
 languageSelect.value = language();
 
 languageSelect.addEventListener("change", async () => {
-  saveLanguage(languageSelect.value);
-  await loadLanguage(languageSelect.value);
-  updateTexts();
+    saveLanguage(languageSelect.value);
+    await loadLanguage(languageSelect.value);
+    updateTexts();
 });
+
+// Text from the chosen brand's feeding chart, e.g. chartText("products.supervit.note", product.note)
+function chartText(key, english) {
+    return dataText(`${brand.brand.id}.${key}`, english);
+}
+
+function productName(product) {
+    return chartText(`products.${product.id}.name`, product.name);
+}
 
 // Brand and schedule
 for (const item of brands) {
-  const option = document.createElement("option");
-  option.value = item.brand.id;
-  option.textContent = item.brand.name;
-  brandSelect.append(option);
+    const option = document.createElement("option");
+    option.value = item.brand.id;
+    option.textContent = item.brand.name;
+    brandSelect.append(option);
 }
 
 function fillSchedules() {
-  scheduleSelect.replaceChildren();
-  for (const item of brand.schedules) {
-    const option = document.createElement("option");
-    option.value = item.id;
-    option.textContent = pick(item.name);
-    scheduleSelect.append(option);
-  }
-  scheduleSelect.value = schedule.id;
+    scheduleSelect.replaceChildren();
+    for (const item of brand.schedules) {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = chartText(`schedules.${item.id}.name`, item.name);
+        scheduleSelect.append(option);
+    }
+    scheduleSelect.value = schedule.id;
 }
 
 brandSelect.addEventListener("input", () => {
-  brand = brands.find((item) => item.brand.id === brandSelect.value);
-  schedule = brand.schedules[0];
-  buildSchedule();
+    brand = brands.find((item) => item.brand.id === brandSelect.value);
+    schedule = brand.schedules[0];
+    buildSchedule();
 });
 
 scheduleSelect.addEventListener("input", () => {
-  schedule = brand.schedules.find((item) => item.id === scheduleSelect.value);
-  buildSchedule();
+    schedule = brand.schedules.find((item) => item.id === scheduleSelect.value);
+    buildSchedule();
 });
 
 // Phase boxes; starts with the given phase if the schedule has it
 function buildPhases(startPhase) {
-  for (const label of phaseBox.querySelectorAll("label")) label.remove();
-  const phases = [...new Set(schedule.weeks.map((w) => w.phase))];
-  for (const phase of phases) {
-    const label = document.createElement("label");
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = "phase";
-    radio.value = phase;
-    radio.className = "choice-input";
-    const box = document.createElement("span");
-    box.className = "choice-box";
-    box.dataset.i18n = `phase.${phase}`;
-    label.append(radio, box);
-    phaseBox.append(label);
-  }
-  const phase = phases.includes(startPhase) ? startPhase : phases[0];
-  phaseBox.querySelector(`input[value="${phase}"]`).checked = true;
-  fillWeeks(phase);
+    for (const label of phaseBox.querySelectorAll("label")) label.remove();
+    const phases = [...new Set(schedule.weeks.map((w) => w.phase))];
+    for (const phase of phases) {
+        const label = document.createElement("label");
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "phase";
+        radio.value = phase;
+        radio.className = "choice-input";
+        const box = document.createElement("span");
+        box.className = "choice-box";
+        box.dataset.i18n = `phase.${phase}`;
+        label.append(radio, box);
+        phaseBox.append(label);
+    }
+    const phase = phases.includes(startPhase) ? startPhase : phases[0];
+    phaseBox.querySelector(`input[value="${phase}"]`).checked = true;
+    fillWeeks(phase);
 }
 
 function currentPhase() {
-  return phaseBox.querySelector("input:checked").value;
+    return phaseBox.querySelector("input:checked").value;
 }
 
 // Weeks: a number, or a name with duration (e.g. "Vegetative I · 0–3 weeks")
 function weekText(entry) {
-  if (!entry.label) return String(entry.week);
-  const name = pick(entry.label);
-  return entry.duration ? `${name} · ${pick(entry.duration)}` : name;
+    if (!entry.label) return String(entry.week);
+    const key = `schedules.${schedule.id}.weeks.${entry.id}`;
+    const name = chartText(`${key}.label`, entry.label);
+    return entry.duration ? `${name} · ${chartText(`${key}.duration`, entry.duration)}` : name;
 }
 
 function fillWeeks(phase, keepSelection = false) {
-  const previous = weekSelect.value;
-  weekSelect.replaceChildren();
-  for (const entry of schedule.weeks.filter((w) => w.phase === phase)) {
-    const option = document.createElement("option");
-    option.value = entry.week;
-    option.textContent = weekText(entry);
-    weekSelect.append(option);
-  }
-  if (keepSelection) weekSelect.value = previous;
+    const previous = weekSelect.value;
+    weekSelect.replaceChildren();
+    for (const entry of schedule.weeks.filter((w) => w.phase === phase)) {
+        const option = document.createElement("option");
+        option.value = entry.week;
+        option.textContent = weekText(entry);
+        weekSelect.append(option);
+    }
+    if (keepSelection) weekSelect.value = previous;
 }
 
 phaseBox.addEventListener("input", (event) => fillWeeks(event.target.value));
 
 // Optional products (checkbox) and choice groups (one of several, radio)
 function addOption(container, product, type, name) {
-  const item = document.createElement("div");
-  item.className = "option-item";
-  item.dataset.product = product.id;
+    const item = document.createElement("div");
+    item.className = "option-item";
+    item.dataset.product = product.id;
 
-  const label = document.createElement("label");
-  label.className = "option";
-  const input = document.createElement("input");
-  input.type = type;
-  input.value = product.id;
-  if (name) input.name = name;
-  const text = document.createElement("span");
-  text.id = `name-${product.id}`;
-  label.append(input, text);
-  item.append(label);
+    const label = document.createElement("label");
+    label.className = "option";
+    const input = document.createElement("input");
+    input.type = type;
+    input.value = product.id;
+    if (name) input.name = name;
+    const text = document.createElement("span");
+    text.id = `name-${product.id}`;
+    label.append(input, text);
+    item.append(label);
 
-  if (product.note) {
-    const note = document.createElement("p");
-    note.className = "note";
-    note.id = `note-${product.id}`;
-    item.append(note);
-  }
-  container.append(item);
+    if (product.note) {
+        const note = document.createElement("p");
+        note.className = "note";
+        note.id = `note-${product.id}`;
+        item.append(note);
+    }
+    container.append(item);
 }
 
 const groups = new Map();
 
 function buildOptions() {
-  optionalBox.replaceChildren();
-  groups.clear();
-  for (const product of schedule.products) {
-    if (product.group) {
-      let box = groups.get(product.group);
-      if (!box) {
-        box = document.createElement("fieldset");
-        box.className = "option-group";
-        const legend = document.createElement("legend");
-        legend.className = "label";
-        legend.dataset.i18n = "label.choice";
-        box.append(legend);
-        optionalBox.append(box);
-        groups.set(product.group, box);
-      }
-      addOption(box, product, "radio", `group-${product.group}`);
-    } else if (product.optional) {
-      addOption(optionalBox, product, "checkbox");
+    optionalBox.replaceChildren();
+    groups.clear();
+    for (const product of schedule.products) {
+        if (product.group) {
+            let box = groups.get(product.group);
+            if (!box) {
+                box = document.createElement("fieldset");
+                box.className = "option-group";
+                const legend = document.createElement("legend");
+                legend.className = "label";
+                legend.dataset.i18n = "label.choice";
+                box.append(legend);
+                optionalBox.append(box);
+                groups.set(product.group, box);
+            }
+            addOption(box, product, "radio", `group-${product.group}`);
+        } else if (product.optional) {
+            addOption(optionalBox, product, "checkbox");
+        }
     }
-  }
-  for (const box of groups.values()) {
-    box.querySelector("input").checked = true;
-  }
+    for (const box of groups.values()) {
+        box.querySelector("input").checked = true;
+    }
 }
 
 // Rebuild everything that depends on the chosen schedule
 function buildSchedule(startPhase, startWeek) {
-  weekLabel.dataset.i18n = schedule.weeks.some((w) => w.label) ? "label.stage" : "label.week";
-  buildPhases(startPhase);
-  if ([...weekSelect.options].some((option) => option.value === startWeek)) weekSelect.value = startWeek;
-  buildOptions();
-  updateTexts();
+    weekLabel.dataset.i18n = schedule.weeks.some((w) => w.label) ? "label.stage" : "label.week";
+    buildPhases(startPhase);
+    if ([...weekSelect.options].some((option) => option.value === startWeek)) weekSelect.value = startWeek;
+    buildOptions();
+    updateTexts();
 }
 
 // Show only the options that have a dose in the chosen week
 function updateOptions() {
-  const available = productsInWeek(schedule, currentPhase(), Number(weekSelect.value)).map((p) => p.id);
-  for (const item of optionalBox.querySelectorAll(".option-item")) {
-    item.hidden = !available.includes(item.dataset.product);
-  }
-  for (const box of groups.values()) {
-    box.hidden = !box.querySelector(".option-item:not([hidden])");
-  }
+    const available = productsInWeek(schedule, currentPhase(), Number(weekSelect.value)).map((p) => p.id);
+    for (const item of optionalBox.querySelectorAll(".option-item")) {
+        item.hidden = !available.includes(item.dataset.product);
+    }
+    for (const box of groups.values()) {
+        box.hidden = !box.querySelector(".option-item:not([hidden])");
+    }
 }
 
 // Notes for the whole schedule, e.g. about EC and pH
 function showScheduleNotes() {
-  scheduleNotes.replaceChildren();
-  for (const note of schedule.notes ?? []) {
-    const item = document.createElement("li");
-    item.textContent = pick(note);
-    scheduleNotes.append(item);
-  }
+    scheduleNotes.replaceChildren();
+    for (const note of schedule.notes ?? []) {
+        const item = document.createElement("li");
+        item.textContent = chartText(`notes.${note.id}`, note.text);
+        scheduleNotes.append(item);
+    }
 }
 
 // Texts in the current language
 function updateTexts() {
-  for (const element of document.querySelectorAll("[data-i18n]")) {
-    element.textContent = t(element.dataset.i18n);
-  }
-  for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
-    element.placeholder = t(element.dataset.i18nPlaceholder);
-  }
-  for (const element of document.querySelectorAll("[data-i18n-label]")) {
-    element.ariaLabel = t(element.dataset.i18nLabel);
-    element.title = t(element.dataset.i18nLabel);
-  }
-  document.title = t("app.title");
-  showChangelog();
-  showUpdate();
-  fillSchedules();
-  fillWeeks(currentPhase(), true);
-  showScheduleNotes();
-  for (const product of schedule.products) {
-    const name = document.querySelector(`#name-${product.id}`);
-    if (name) name.textContent = pick(product.name);
-    const note = document.querySelector(`#note-${product.id}`);
-    if (note) note.textContent = pick(product.note);
-  }
-  refresh();
+    for (const element of document.querySelectorAll("[data-i18n]")) {
+        element.textContent = t(element.dataset.i18n);
+    }
+    for (const element of document.querySelectorAll("[data-i18n-placeholder]")) {
+        element.placeholder = t(element.dataset.i18nPlaceholder);
+    }
+    for (const element of document.querySelectorAll("[data-i18n-label]")) {
+        element.ariaLabel = t(element.dataset.i18nLabel);
+        element.title = t(element.dataset.i18nLabel);
+    }
+    document.title = t("app.title");
+    showChangelog();
+    showUpdate();
+    fillSchedules();
+    fillWeeks(currentPhase(), true);
+    showScheduleNotes();
+    for (const product of schedule.products) {
+        const name = document.querySelector(`#name-${product.id}`);
+        if (name) name.textContent = productName(product);
+        const note = document.querySelector(`#note-${product.id}`);
+        if (note) note.textContent = chartText(`products.${product.id}.note`, product.note);
+    }
+    refresh();
 }
 
 // Result
 function readLiters() {
-  const value = Number(waterInput.value.replace(",", "."));
-  if (!(value > 0)) return null;
-  return unitSelect.value === "ml" ? value / 1000 : value;
+    const value = Number(waterInput.value.replace(",", "."));
+    if (!(value > 0)) return null;
+    return unitSelect.value === "ml" ? value / 1000 : value;
 }
 
 function unitText(unit, amount) {
-  return unit === "drops" ? plural("unit.drops", amount) : t(`unit.${unit}`);
+    return unit === "drops" ? plural("unit.drops", amount) : t(`unit.${unit}`);
 }
 
 // One amount or a range, e.g. "3,5 ml" or "2,1–3,5 ml"
 function amountText(amount, unit, digits) {
-  const values = Array.isArray(amount) ? amount : [amount];
-  const numbers = values.map((value) => formatNumber(value, digits)).join("–");
-  return `${numbers} ${unitText(unit, values.at(-1))}`;
+    const values = Array.isArray(amount) ? amount : [amount];
+    const numbers = values.map((value) => formatNumber(value, digits)).join("–");
+    return `${numbers} ${unitText(unit, values.at(-1))}`;
 }
 
 const digitsPerUnit = { ml: 1, drops: 0, g: 2 };
 
 function showResult() {
-  resultList.replaceChildren();
-  waterInfo.textContent = "";
-  const liters = readLiters();
-  resultCard.hidden = liters === null;
-  if (liters === null) return;
+    resultList.replaceChildren();
+    waterInfo.textContent = "";
+    const liters = readLiters();
+    resultCard.hidden = liters === null;
+    if (liters === null) return;
 
-  const selected = [...optionalBox.querySelectorAll("input:checked")].map((input) => input.value);
-  const doses = calculateDoses(schedule, currentPhase(), Number(weekSelect.value), liters, selected);
+    const selected = [...optionalBox.querySelectorAll("input:checked")].map((input) => input.value);
+    const doses = calculateDoses(schedule, currentPhase(), Number(weekSelect.value), liters, selected);
 
-  const premixed = [];
-  for (const dose of doses) {
-    const product = schedule.products.find((p) => p.id === dose.productId);
-    if (product.premix) {
-      premixed.push(`${amountText(dose.amount, dose.unit, 2)} ${pick(product.name)}`);
-      continue;
+    const premixed = [];
+    for (const dose of doses) {
+        const product = schedule.products.find((p) => p.id === dose.productId);
+        if (product.premix) {
+            premixed.push(`${amountText(dose.amount, dose.unit, 2)} ${productName(product)}`);
+            continue;
+        }
+        const item = document.createElement("li");
+        item.className = "dose";
+        const name = document.createElement("span");
+        name.textContent = productName(product);
+        const amount = document.createElement("span");
+        amount.className = "dose-amount";
+        amount.textContent = amountText(dose.amount, dose.unit, digitsPerUnit[dose.unit] ?? 1);
+        item.append(name, amount);
+        resultList.append(item);
     }
-    const item = document.createElement("li");
-    item.className = "dose";
-    const name = document.createElement("span");
-    name.textContent = pick(product.name);
-    const amount = document.createElement("span");
-    amount.className = "dose-amount";
-    amount.textContent = amountText(dose.amount, dose.unit, digitsPerUnit[dose.unit] ?? 1);
-    item.append(name, amount);
-    resultList.append(item);
-  }
 
-  const amount = `${waterInput.value} ${t(`unit.${unitSelect.value}`)}`;
-  waterInfo.textContent = premixed.length
-    ? t("water.premixed", { amount, products: premixed.join(", ") })
-    : t("water.clear", { amount });
+    const amount = `${waterInput.value} ${t(`unit.${unitSelect.value}`)}`;
+    waterInfo.textContent = premixed.length
+        ? t("water.premixed", { amount, products: premixed.join(", ") })
+        : t("water.clear", { amount });
 }
 
 function saveSelection() {
-  localStorage.setItem("selection", JSON.stringify({
-    brand: brand.brand.id,
-    schedule: schedule.id,
-    phase: currentPhase(),
-    week: weekSelect.value,
-    unit: unitSelect.value,
-  }));
+    localStorage.setItem("selection", JSON.stringify({
+        brand: brand.brand.id,
+        schedule: schedule.id,
+        phase: currentPhase(),
+        week: weekSelect.value,
+        unit: unitSelect.value,
+    }));
 }
 
 function refresh() {
-  updateOptions();
-  showResult();
-  saveSelection();
+    updateOptions();
+    showResult();
+    saveSelection();
 }
 
 document.addEventListener("input", refresh);

@@ -1,5 +1,10 @@
-[
-    "hesi.json",
-    "biobizz.json",
-    "canna.json"
-]
+{
+    "schema": "feed-chart-index",
+    "schemaVersion": 1,
+    "version": 1,
+    "charts": [
+        "hesi.json",
+        "biobizz.json",
+        "canna.json"
+    ]
+}

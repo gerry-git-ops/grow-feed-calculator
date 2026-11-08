@@ -1,0 +1,96 @@
+{
+    "schema": "feed-chart-translation",
+    "schemaVersion": 1,
+    "version": 1,
+    "texts": {
+        "hesi": {
+            "schedules": {
+                "soil": {
+                    "name": "Terre"
+                }
+            },
+            "products": {
+                "tnt-complex": {
+                    "name": "TNT"
+                },
+                "bloom-complex": {
+                    "name": "Floraison"
+                },
+                "phosphorus-plus": {
+                    "name": "Phosphor"
+                },
+                "root-complex": {
+                    "name": "Root"
+                },
+                "supervit": {
+                    "note": "Prémélanger 1 goutte dans 4,5 L d'eau et l'utiliser comme eau d'arrosage."
+                },
+                "powerzyme": {
+                    "note": "Utiliser 1 à 2 fois par semaine, avec l'engrais et les boosters."
+                }
+            }
+        },
+        "biobizz": {
+            "notes": {
+                "extend-growth": "La phase de croissance peut être prolongée aussi longtemps que souhaité.",
+                "final-weeks": "Semaine 9 : eau claire uniquement. Semaine 10 : récolte."
+            },
+            "products": {
+                "microbes": {
+                    "note": "Utiliser une fois par semaine – deux fois en cas de besoin élevé en nutriments pendant la croissance et la floraison."
+                },
+                "fish-mix": {
+                    "note": "Peut être utilisé pendant la croissance – passer à Bio-Grow au début de la floraison."
+                }
+            }
+        },
+        "canna": {
+            "schedules": {
+                "terra": {
+                    "weeks": {
+                        "start": {
+                            "label": "Démarrage / enracinement",
+                            "duration": "3–5 jours"
+                        },
+                        "veg-1": {
+                            "label": "Croissance I",
+                            "duration": "0–3 semaines"
+                        },
+                        "veg-2": {
+                            "label": "Croissance II",
+                            "duration": "2–4 semaines"
+                        },
+                        "gen-1": {
+                            "label": "Floraison I",
+                            "duration": "2–3 semaines"
+                        },
+                        "gen-2": {
+                            "label": "Floraison II",
+                            "duration": "1 semaine"
+                        },
+                        "gen-3": {
+                            "label": "Floraison III",
+                            "duration": "2–3 semaines"
+                        },
+                        "gen-4": {
+                            "label": "Floraison IV – maturation",
+                            "duration": "1–2 semaines"
+                        }
+                    }
+                }
+            },
+            "notes": {
+                "guidelines": "Les doses sont des valeurs indicatives du fabricant. La bonne quantité dépend aussi de la plante, de la température, de l'humidité et du substrat.",
+                "ec-ph": "Le fabricant recommande de surveiller l'EC et le pH. Cette application n'en tient pas compte."
+            },
+            "products": {
+                "cannazym": {
+                    "note": "Doubler la dose à 50 ml pour 10 L si le substrat est réutilisé."
+                },
+                "cannaboost": {
+                    "note": "Standard 20 ml pour 10 L – augmenter jusqu'à 40 ml maximum pour 10 L pour plus de puissance en floraison."
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "schema": "feed-chart-translation",
+    "schemaVersion": 1,
+    "version": 1,
+    "texts": {
+        "hesi": {
+            "schedules": {
+                "soil": {
+                    "name": "Erde"
+                }
+            },
+            "products": {
+                "bloom-complex": {
+                    "name": "Blüh Complex"
+                },
+                "phosphorus-plus": {
+                    "name": "Phosphor Plus"
+                },
+                "root-complex": {
+                    "name": "Wurzel Complex"
+                },
+                "supervit": {
+                    "note": "1 Tropfen in 4,5 L Wasser vormischen und als Gießwasser verwenden."
+                },
+                "powerzyme": {
+                    "note": "1 bis 2 Mal pro Woche zusammen mit Dünger und Boostern verwenden."
+                }
+            }
+        },
+        "biobizz": {
+            "notes": {
+                "extend-growth": "Die Wachstumsphase kann beliebig verlängert werden.",
+                "final-weeks": "Woche 9: nur Wasser. Woche 10: Ernte."
+            },
+            "products": {
+                "microbes": {
+                    "note": "Einmal pro Woche anwenden – bei hohem Nährstoffbedarf in Wachstum und Blüte zweimal."
+                },
+                "fish-mix": {
+                    "note": "Kann in der Wachstumsphase verwendet werden – zur Blüte auf Bio-Grow umsteigen."
+                }
+            }
+        },
+        "canna": {
+            "schedules": {
+                "terra": {
+                    "weeks": {
+                        "start": {
+                            "label": "Start / Bewurzelung",
+                            "duration": "3–5 Tage"
+                        },
+                        "veg-1": {
+                            "label": "Wachstum I",
+                            "duration": "0–3 Wochen"
+                        },
+                        "veg-2": {
+                            "label": "Wachstum II",
+                            "duration": "2–4 Wochen"
+                        },
+                        "gen-1": {
+                            "label": "Blüte I",
+                            "duration": "2–3 Wochen"
+                        },
+                        "gen-2": {
+                            "label": "Blüte II",
+                            "duration": "1 Woche"
+                        },
+                        "gen-3": {
+                            "label": "Blüte III",
+                            "duration": "2–3 Wochen"
+                        },
+                        "gen-4": {
+                            "label": "Blüte IV – Reife",
+                            "duration": "1–2 Wochen"
+                        }
+                    }
+                }
+            },
+            "notes": {
+                "guidelines": "Die Mengen sind Richtwerte des Herstellers. Die passende Menge hängt auch von Pflanze, Temperatur, Luftfeuchtigkeit und Substrat ab.",
+                "ec-ph": "Der Hersteller empfiehlt, auf EC- und pH-Wert zu achten. Diese App berücksichtigt das nicht."
+            },
+            "products": {
+                "cannazym": {
+                    "note": "Dosis auf 50 ml pro 10 L verdoppeln, wenn das Substrat wiederverwendet wird."
+                },
+                "cannaboost": {
+                    "note": "Standard 20 ml pro 10 L – für mehr Blühkraft auf maximal 40 ml pro 10 L erhöhen."
+                }
+            }
+        }
+    }
+}
