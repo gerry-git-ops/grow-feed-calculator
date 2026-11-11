@@ -17,7 +17,7 @@ Hersteller, Schema und Woche wählen, die Wassermenge eingeben und für jedes Pr
 &nbsp;
 ![Sprachen](https://img.shields.io/badge/Sprachen-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)![FR](https://img.shields.io/badge/FR-db2777)
 
-### 👉 [App öffnen](https://gerry-git-ops.github.io/grow-feed-calculator/)
+### 👉 [App öffnen](https://gerrys-codeatorium.github.io/grow-feed-calculator/)
 
 </div>
 
@@ -26,6 +26,10 @@ Hersteller, Schema und Woche wählen, die Wassermenge eingeben und für jedes Pr
 > [!NOTE]
 > **Frühe Version.** Der Rechner funktioniert und lässt sich auf dem Home-Bildschirm installieren.
 > Weitere Düngeschemas folgen.
+
+> [!IMPORTANT]
+> **Neue Adresse.** Die App ist im Zuge einer Umstrukturierung umgezogen: https://gerrys-codeatorium.github.io/grow-feed-calculator/
+> Wer sie von der alten Adresse (`gerry-git-ops.github.io`) installiert hat, bekommt dort keine Updates mehr. Bitte die alte App löschen und von der neuen Adresse neu installieren. Sprache und Update-Einstellung müssen dann neu gewählt werden.
 
 Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – das übernimmt später ein eigener
 **Grow Manager**, der diesen Rechner über eine API nutzen kann.
@@ -69,7 +73,7 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
 <details>
 <summary><b>iPhone / iPad (Safari)</b></summary>
 
-1. Die [App](https://gerry-git-ops.github.io/grow-feed-calculator/) in Safari öffnen.
+1. Die [App](https://gerrys-codeatorium.github.io/grow-feed-calculator/) in Safari öffnen.
 2. Auf das Teilen-Symbol tippen (Quadrat mit Pfeil).
 3. **Zum Home-Bildschirm** wählen.
 
@@ -78,7 +82,7 @@ Die App **rechnet nur**. Sie verfolgt oder überwacht deine Pflanzen nicht – d
 <details>
 <summary><b>Android (Chrome)</b></summary>
 
-1. Die [App](https://gerry-git-ops.github.io/grow-feed-calculator/) in Chrome öffnen.
+1. Die [App](https://gerrys-codeatorium.github.io/grow-feed-calculator/) in Chrome öffnen.
 2. Auf das Menü (⋮) tippen.
 3. **Zum Startbildschirm hinzufügen** oder **App installieren** wählen.
 
@@ -200,7 +204,7 @@ Derselbe Verlauf steht in der App. Er liegt in [`changelog.json`](../changelog.j
 | BioBizz | Light-Mix / Coco-Mix | Anzucht, Wuchs, 8 Wochen Blüte, Woche 9 nur Wasser |
 | Canna | Terra | Start, 2 Wuchs-Abschnitte, 4 Blüte-Abschnitte – mit Mengen-Spannen |
 
-Dein Dünger fehlt? Sag mir Bescheid in einem [Issue](https://github.com/gerry-git-ops/grow-feed-calculator/issues).
+Dein Dünger fehlt? Sag mir Bescheid in einem [Issue](https://github.com/gerrys-codeatorium/grow-feed-calculator/issues).
 
 ## ⚙️ So funktioniert es
 

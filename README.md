@@ -17,7 +17,7 @@ Pick a manufacturer, a schedule and a week, enter how much water you mix, and ge
 &nbsp;
 ![Languages](https://img.shields.io/badge/Languages-EN-6366f1)![DE](https://img.shields.io/badge/DE-8a2be2)![FR](https://img.shields.io/badge/FR-db2777)
 
-### 👉 [Open the app](https://gerry-git-ops.github.io/grow-feed-calculator/)
+### 👉 [Open the app](https://gerrys-codeatorium.github.io/grow-feed-calculator/)
 
 </div>
 
@@ -26,6 +26,10 @@ Pick a manufacturer, a schedule and a week, enter how much water you mix, and ge
 > [!NOTE]
 > **Early version.** The calculator works and can be installed on your home screen.
 > More feeding charts will follow.
+
+> [!IMPORTANT]
+> **New address.** The app has moved to https://gerrys-codeatorium.github.io/grow-feed-calculator/ as part of a restructuring.
+> If you installed it from the old address (`gerry-git-ops.github.io`), that copy no longer receives updates. Please delete it and install the app again from the new address. Your language and update settings will need to be set again.
 
 The app only **calculates**. It does not track or monitor your plants – that is the job of a future
 **Grow Manager**, which will be able to use this calculator through an API.
@@ -69,7 +73,7 @@ The app only **calculates**. It does not track or monitor your plants – that i
 <details>
 <summary><b>iPhone / iPad (Safari)</b></summary>
 
-1. Open the [app](https://gerry-git-ops.github.io/grow-feed-calculator/) in Safari.
+1. Open the [app](https://gerrys-codeatorium.github.io/grow-feed-calculator/) in Safari.
 2. Tap the share button (square with arrow).
 3. Choose **Add to Home Screen**.
 
@@ -78,7 +82,7 @@ The app only **calculates**. It does not track or monitor your plants – that i
 <details>
 <summary><b>Android (Chrome)</b></summary>
 
-1. Open the [app](https://gerry-git-ops.github.io/grow-feed-calculator/) in Chrome.
+1. Open the [app](https://gerrys-codeatorium.github.io/grow-feed-calculator/) in Chrome.
 2. Tap the menu (⋮).
 3. Choose **Add to Home screen** or **Install app**.
 
@@ -200,7 +204,7 @@ The same history is shown in the app. It is kept in [`changelog.json`](changelog
 | BioBizz | Light-Mix / Coco-Mix | Propagation, growth, 8 weeks bloom, week 9 water only |
 | Canna | Terra | Start, 2 growth stages, 4 bloom stages – with dose ranges |
 
-Missing your fertilizer? Let me know in an [issue](https://github.com/gerry-git-ops/grow-feed-calculator/issues).
+Missing your fertilizer? Let me know in an [issue](https://github.com/gerrys-codeatorium/grow-feed-calculator/issues).
 
 ## ⚙️ How it works
 
